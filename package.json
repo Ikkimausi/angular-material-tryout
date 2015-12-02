@@ -11,16 +11,23 @@
   },
   "devDependencies": {
     "browserify": "^12.0.1",
+    "copyfiles": "^0.2.1",
+    "jshint": "^2.8.0",
     "mkdirp": "^0.5.1",
     "node-sass": "^3.4.2",
+    "parallelshell": "^2.0.0",
+    "rimraf": "^2.4.4",
     "watchify": "^3.6.1"
   },
   "scripts": {
-    "build-sass": "mkdirp dist/css && node-sass static/scss/app.scss -o dist/css",
-    "watch-sass": "mkdirp dist/css && node-sass -w static/scss/app.scss -o dist/css",
-    "build-js": "mkdirp dist/js && browserify static/js/*.js -o dist/js/bundle.js",
-    "watch-js": "mkdirp dist/js && watchify -o dist/js/bundle.js -v -d .",
-    "build": "parallelshell 'npm run build-sass' 'npm run build-js'",
-    "watch": "parallelshell 'npm run watch-sass' 'npm run watch-js'"
+    "clean": "rimraf dist",
+    "release:html": "copyfiles -u 1 static/**/*.html dist/",
+    "prebuild": "parallelshell 'npm run clean' 'npm run release:html'",
+    "build:sass": "mkdirp dist/css && node-sass static/scss/app.scss -o dist/css",
+    "build:js": "mkdirp dist/js && browserify static/js/*.js -o dist/js/bundle.js",
+    "build": "parallelshell 'npm run build:sass' 'npm run build:js'",
+    "watch:sass": "mkdirp dist/css && node-sass -w static/scss/app.scss -o dist/css",
+    "watch:js": "mkdirp dist/js && watchify -o dist/js/bundle.js -v -d .",
+    "watch": "parallelshell 'npm run watch:sass' 'npm run watch:js'"
   }
 }
