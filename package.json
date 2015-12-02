@@ -2,5 +2,25 @@
   "name": "angular-material-tryout",
   "version": "0.0.1",
   "description": "Tryout of angular js material design elements",
-  "author": "Bert Swinnen"
+  "author": "Bert Swinnen",
+  "dependencies": {
+    "angular": "^1.4.8",
+    "angular-animate": "^1.4.8",
+    "angular-aria": "^1.4.8",
+    "angular-material": "^0.11.4"
+  },
+  "devDependencies": {
+    "browserify": "^12.0.1",
+    "mkdirp": "^0.5.1",
+    "node-sass": "^3.4.2",
+    "watchify": "^3.6.1"
+  },
+  "scripts": {
+    "build-sass": "mkdirp dist/css && node-sass static/scss/app.scss -o dist/css",
+    "watch-sass": "mkdirp dist/css && node-sass -w static/scss/app.scss -o dist/css",
+    "build-js": "mkdirp dist/js && browserify static/js/*.js -o dist/js/bundle.js",
+    "watch-js": "mkdirp dist/js && watchify -o dist/js/bundle.js -v -d .",
+    "build": "parallelshell 'npm run build-sass' 'npm run build-js'",
+    "watch": "parallelshell 'npm run watch-sass' 'npm run watch-js'"
+  }
 }
