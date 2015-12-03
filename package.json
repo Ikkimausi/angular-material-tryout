@@ -7,12 +7,16 @@
     "angular": "^1.4.8",
     "angular-animate": "^1.4.8",
     "angular-aria": "^1.4.8",
-    "angular-material": "^0.11.4"
+    "angular-material": "^0.11.4",
+    "angular-route": "^1.4.8"
   },
   "devDependencies": {
+    "angular-mocks": "^1.4.8",
     "browserify": "^12.0.1",
     "copyfiles": "^0.2.1",
+    "express": "^4.13.3",
     "jshint": "^2.8.0",
+    "livereload": "^0.4.0",
     "mkdirp": "^0.5.1",
     "node-sass": "^3.4.2",
     "parallelshell": "^2.0.0",
@@ -21,13 +25,13 @@
   },
   "scripts": {
     "clean": "rimraf dist",
-    "release:html": "copyfiles -u 1 static/**/*.html dist/",
+    "release:html": "copyfiles -u 1 static/*.html static/**/*.html dist/",
     "prebuild": "parallelshell 'npm run clean' 'npm run release:html'",
     "build:sass": "mkdirp dist/css && node-sass static/scss/app.scss -o dist/css",
     "build:js": "mkdirp dist/js && browserify static/js/*.js -o dist/js/bundle.js",
     "build": "parallelshell 'npm run build:sass' 'npm run build:js'",
     "watch:sass": "mkdirp dist/css && node-sass -w static/scss/app.scss -o dist/css",
-    "watch:js": "mkdirp dist/js && watchify -o dist/js/bundle.js -v -d .",
+    "watch:js": "mkdirp dist/js && watchify -o dist/js/bundle.js -v -d ./static",
     "watch": "parallelshell 'npm run watch:sass' 'npm run watch:js'"
   }
 }

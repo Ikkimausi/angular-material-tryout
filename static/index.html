@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app>
 	<head>
 		<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,20 +15,35 @@
         }
     </style>
 	</head>
-	<body ng-controller="MyController">
-
-		<div ng-app="autocompleteDemo" ng-controller="DemoCtrl as ctrl" layout="column">
-	  <md-content class="md-padding" layout="column">
-	    <md-autocomplete
-	      md-selected-item="ctrl.selectedItem"
-	      md-search-text="ctrl.searchText"
-	      md-items="item in ctrl.querySearch(ctrl.searchText)"
-	      md-item-text="item.display"
-	      placeholder="What is your favorite US state?">
-	      <span md-highlight-text="ctrl.searchText">{{item.display}}</span>
-	    </md-autocomplete>
-	    <p class="md-padding">Demo borrowed from the <a href="https://material.angularjs.org/#/demo/material.components.autocomplete">Angular Material Design</a> site.</p>
-	  </md-content>
+	<body>
+		<md-menu-bar>
+		  <md-menu>
+		    <button ng-click="$mdOpenMenu()">
+		      File
+		    </button>
+		    <md-menu-content>
+		      <md-menu-item>
+		        <md-button ng-click="ctrl.sampleAction('share', $event)">
+		          Share...
+		        </md-button>
+		      </md-menu-item>
+		      <md-menu-divider></md-menu-divider>
+		      <md-menu-item>
+		      <md-menu-item>
+		        <md-menu>
+		          <md-button ng-click="$mdOpenMenu()">New</md-button>
+		          <md-menu-content>
+		            <md-menu-item><md-button ng-click="ctrl.sampleAction('New Document', $event)">Document</md-button></md-menu-item>
+		            <md-menu-item><md-button ng-click="ctrl.sampleAction('New Spreadsheet', $event)">Spreadsheet</md-button></md-menu-item>
+		            <md-menu-item><md-button ng-click="ctrl.sampleAction('New Presentation', $event)">Presentation</md-button></md-menu-item>
+		            <md-menu-item><md-button ng-click="ctrl.sampleAction('New Form', $event)">Form</md-button></md-menu-item>
+		            <md-menu-item><md-button ng-click="ctrl.sampleAction('New Drawing', $event)">Drawing</md-button></md-menu-item>
+		          </md-menu-content>
+		        </md-menu>
+		      </md-menu-item>
+		    </md-menu-item></md-menu-content>
+		  </md-menu>
+		</md-menu-bar>
 
 		<script src="js/bundle.js"></script>
 	</body>
