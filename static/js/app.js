@@ -1,8 +1,8 @@
 'use strict';
 
 var angular = require('angular');
-require('angular-material');
-require('angular-route');
+var angularMaterial = require('angular-material');
+var angularRoute = require('angular-route');
 module.exports = 'ngMaterial';
 
 // Load modules
@@ -10,8 +10,8 @@ require('./book');
 
 // Define app
 var libraryApp = angular.module('libraryApp', [
-  require('angular-material'),
-  require('angular-route'),
+  angularMaterial,
+  angularRoute,
   'libraryApp.bookModule'
 ]);
 

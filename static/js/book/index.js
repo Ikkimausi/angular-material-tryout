@@ -2,7 +2,7 @@
 
 // Load modules
 var angular = require('angular');
-require('angular-route');
+var angularRoute = require('angular-route');
 
 // Define module
 var bookModule = angular.module('libraryApp.bookModule', []);
