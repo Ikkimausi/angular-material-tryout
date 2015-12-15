@@ -7,8 +7,8 @@ require('angular-material');
 require('angular-route');
 module.exports = 'ngMaterial';
 
-// Define modules
-require('./bookModule');
+// Load modules
+require('./book');
 
 // Define app
 var libraryApp = angular.module('libraryApp', [
