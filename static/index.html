@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app>
+<html lang="en">
 	<head>
 		<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,8 +16,16 @@
     </style>
 		<script src="http://localhost:35729/livereload.js"></script>
 	</head>
-	<body>
-		TEST7
+	<body ng-app="libraryApp">
+		<div>
+			<md-tabs md-stretch-tabs>
+	     	<md-tab>
+					<a href="#/books">Books</a>
+				</md-tab>
+	  	</md-tabs>
+
+			<div ng-view flex></div>
+		</div>
 
 		<script src="js/bundle.js"></script>
 	</body>
