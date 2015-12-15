@@ -7,28 +7,29 @@ require('angular-material');
 require('angular-route');
 module.exports = 'ngMaterial';
 
-require('./book');
+// Define modules
+require('./bookModule');
 
-var libraryApp = angular.module('libraryApp', [require('angular-material'), require('angular-route'), 'libraryApp.bookModule']);
+// Define app
+var libraryApp = angular.module('libraryApp', [
+  require('angular-material'),
+  require('angular-route'),
+  'libraryApp.bookModule'
+]);
 
+// Global routing
 libraryApp.config(['$routeProvider',
-    function($routeProvider) {
-      $routeProvider.
-        when('/books', {
-          templateUrl: 'partials/book-list.html',
-          action: 'libraryApp.book.bookListCtrl'
-        }).
-        when('/books/:isbn', {
-          templateUrl: 'partials/book-detail.html',
-          action: 'libraryApp.book.bookDetailCtrl'
-        }).
-        otherwise({
-          redirectTo: '/books'
-        });
-    }]
-  )
-  .config(function($mdThemingProvider) {
+  function($routeProvider) {
+    $routeProvider.
+      otherwise({
+        redirectTo: '/books'
+      });
+  }]
+);
+
+// Material design theming
+libraryApp.config(function($mdThemingProvider) {
   $mdThemingProvider.theme('default')
     .primaryPalette('blue')
     .accentPalette('orange');
-  });
+});
