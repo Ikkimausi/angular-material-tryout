@@ -27,13 +27,13 @@
   "scripts": {
     "clean": "rimraf dist",
     "release:html": "copyfiles -u 1 static/*.html static/**/*.html dist/",
-    "prebuild": "parallelshell 'npm run clean' 'npm run release:html'",
+    "prebuild": "parallelshell \"npm run clean\" \"npm run release:html\"",
     "build:sass": "mkdirp dist/css && node-sass static/scss/app.scss -o dist/css",
-    "build:js": "mkdirp dist/js && browserify static/js/*.js -o dist/js/bundle.js",
-    "build": "parallelshell 'npm run build:sass' 'npm run build:js'",
+    "build:js": "mkdirp dist/js && browserify static/js/app.js -o dist/js/bundle.js",
+    "build": "parallelshell \"npm run build:sass\" \"npm run build:js\"",
     "watch:sass": "mkdirp dist/css && node-sass -w static/scss/app.scss -o dist/css",
-    "watch:js": "mkdirp dist/js && watchify static/**/*.js -o dist/js/bundle.js -v",
-    "watch:html": "watch-run -p 'static/**/*.html' 'npm run release:html'",
-    "watch": "parallelshell 'npm run watch:sass' 'npm run watch:js' 'npm run watch:html'"
+    "watch:js": "mkdirp dist/js && watchify static/js/app.js -o dist/js/bundle.js -v",
+    "watch:html": "watch-run -p \"static/**/*.html\" \"npm run release:html\"",
+    "watch": "parallelshell \"npm run watch:sass\" \"npm run watch:js\" \"npm run watch:html\""
   }
 }
