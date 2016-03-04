@@ -1,5 +1,15 @@
 @import 'node_modules/angular-material/angular-material.scss';
 
-.test{
-  
+.genericItemHover{
+  padding: 5px;
+  border: 1px solid black;
+  background:white;
+  z-index: 200;
+  transform: scale(1.2);
+  transition:all linear 0.3s;
 }
+
+.genericItem.ng-hide {
+  opacity:0;
+}
+

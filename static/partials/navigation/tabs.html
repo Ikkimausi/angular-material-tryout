@@ -1,0 +1,9 @@
+<div ng-controller="navigationCtrl">
+    <md-tabs md-stretch-tabs>
+        <md-tab ng-repeat="tabLabel in tabLabels" md-active="isTabActive(tabLabel)" md-on-select="navigate(tabLabel)" >
+            <md-tab-label>
+                <a ng-href="{{href(tabLabel)}}">{{tabLabel}}</a>
+            </md-tab-label>
+        </md-tab>
+    </md-tabs>
+</div>

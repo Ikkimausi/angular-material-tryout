@@ -1,0 +1,14 @@
+<div ng-controller="genericItemCtrl">
+    <md-grid-list md-cols="{{columns}}" md-row-height-gt-sm="1:1">
+        <md-grid-tile ng-repeat="genericItem in genericItems track by $index" md-rowspan-gt-sm=="{{getRow($index)}}"
+                      md-colspan-gt-sm=="{{getColumn($index)}}" ng-mouseover="imgClass = 'genericItemHover'" ng-mouseleave="imgClass = 'genericItem'">
+            <md-grid-tile-header class="layout-align-center">#{{ genericItemNumber($index) }}</md-grid-tile-header>
+            <md-card>
+                <img ng-class="imgClass" ng-src="http://{{genericItem}}" alt="{{itemType + ' #' + genericItemNumber($index) }}"
+                     ng-init="loading = true" ng-load="loading = false"
+                     ng-show="!loading">
+            </md-card>
+            <md-progress-circular md-mode="indeterminate" ng-show="loading"></md-progress-circular>
+        </md-grid-tile>
+    </md-grid-list>
+</div>

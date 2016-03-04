@@ -1,32 +1,25 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Library index</title>
-		<link rel="stylesheet" href="css/app.css">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Library index</title>
+	<link rel="stylesheet" href="css/app.css">
 
-		<style type="text/css">
-        /**
-         * Hide when Angular is not yet loaded and initialized
-         */
-        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-          display: none !important;
-        }
-    </style>
-		<script src="http://localhost:35729/livereload.js"></script>
-	</head>
-	<body ng-app="libraryApp">
-		<div>
-			<md-tabs md-stretch-tabs>
-	     	<md-tab>
-					<a href="#/books">Books</a>
-				</md-tab>
-	  	</md-tabs>
+	<style type="text/css">
+		/**
+		 * Hide when Angular is not yet loaded and initialized
+		 */
+		[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+			display: none !important;
+		}
+	</style>
+	<script src="http://localhost:35729/livereload.js"></script>
+</head>
+<body ng-app="libraryApp">
+	<div ng-include="'partials/navigation/tabs.html'"></div>
+	<div ng-view flex></div>
 
-			<div ng-view flex></div>
-		</div>
-
-		<script src="js/bundle.js"></script>
-	</body>
+	<script src="js/bundle.js"></script>
+</body>
 </html>
