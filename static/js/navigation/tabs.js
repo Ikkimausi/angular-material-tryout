@@ -1,21 +1,52 @@
 'use strict';
 
-module.exports = function ($scope, $location) {
-	$scope.tabLabels = ['books', 'kittens', 'dogs', 'bees', 'skulls', 'architecture', 'food'];
+module.exports = function ($scope, $location, $route, $mdDialog, imageUrlService) {
+	$scope.selectedIndex = 0;
 
-	$scope.isTabActive = function (urlPart) {
-		return $location.path().indexOf(urlPart) > -1;
-	}
+	imageUrlService.getImageUrls().then(function (response) {
+		setTabs($scope, response);
+	});
 
-	$scope.navigate = function (urlPart) {
-		$location.path(getUrl(urlPart));
-	}
+	$scope.openNewTabDialog = function () {
+		$mdDialog.show({
+			controller: require('./newTab'),
+			templateUrl: 'partials/navigation/newTab.html',
+			clickOutsideToClose: true
+		}).then(function (response) {
+			imageUrlService.getImageUrls().then(function (tabs) {
+				setTabs($scope, tabs);
+				$scope.selectedIndex = tabs.length - 1;
+				$location.path(response.data.path);
+			});
+		});
+	};
 
-	$scope.href = function (urlPart) {
-		return "#/" + getUrl(urlPart);
-	}
+	$scope.openEditTabDialog = function () {
+		let selectedIndex = $scope.selectedIndex;
+		if (!$scope.tabs[selectedIndex].editable) {
+			selectedIndex = selectedIndex == 0 ? selectedIndex + 1 : selectedIndex - 1;
+		}
+		$mdDialog.show({
+			locals: {selectedTab: $scope.tabs[selectedIndex]},
+			controller: require('./editTab'),
+			templateUrl: '../../partials/navigation/editTab.html'
+		}).then(function (response) {
+			imageUrlService.getImageUrls().then(function (tabs) {
+				setTabs($scope, tabs);
+				if ($location.path() == response.path) {
+					$route.reload();
+				}
+			});
+		});
+	};
 };
 
-function getUrl(urlPart) {
-	return "generic/" + urlPart;
+function setTabs($scope, tabs) {
+	$scope.tabs = tabs;
+	$scope.editableTabsAvailable = false;
+	tabs.forEach(function (tab) {
+		if (tab.editable) {
+			$scope.editableTabsAvailable = true;
+		}
+	});
 }

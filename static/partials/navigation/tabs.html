@@ -1,9 +1,27 @@
 <div ng-controller="navigationCtrl">
-    <md-tabs md-stretch-tabs>
-        <md-tab ng-repeat="tabLabel in tabLabels" md-active="isTabActive(tabLabel)" md-on-select="navigate(tabLabel)" >
-            <md-tab-label>
-                <a ng-href="{{href(tabLabel)}}">{{tabLabel}}</a>
-            </md-tab-label>
-        </md-tab>
-    </md-tabs>
+	<md-toolbar layout="row" class="md-toolbar-tools">
+		<md-tabs md-stretch-tabs flex md-autoselect="false" md-selected="selectedIndex">
+			<my-tab ng-repeat="tab in tabs track by $index" tab="tab" selected-index="selectedIndex"
+			        tab-index="$index"></my-tab>
+		</md-tabs>
+		<md-menu>
+			<md-button class="md-icon-button" aria-label="More" ng-click="$mdOpenMenu($event)">
+				<md-icon md-font-library="material-icons">more_vert</md-icon>
+			</md-button>
+			<md-menu-content>
+				<md-menu-item>
+					<md-button ng-click="openNewTabDialog()">
+						<md-icon md-font-library="material-icons">add</md-icon>
+						<span>Add new tab</span>
+					</md-button>
+				</md-menu-item>
+				<md-menu-item>
+					<md-button ng-click="openEditTabDialog()" ng-disabled="!editableTabsAvailable">
+						<md-icon md-font-library="material-icons">mode_edit</md-icon>
+						<span>Edit tabs</span>
+					</md-button>
+				</md-menu-item>
+			</md-menu-content>
+		</md-menu>
+	</md-toolbar>
 </div>

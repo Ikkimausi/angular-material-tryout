@@ -1,11 +1,13 @@
 'use strict';
 
-var angular = require('angular');
-var angularMaterial = require('angular-material');
-var angularRoute = require('angular-route');
+let angular = require('angular');
+let angularMaterial = require('angular-material');
+let angularRoute = require('angular-route');
 module.exports = 'ngMaterial';
 
 // Load modules
+require('./directives');
+require('./services');
 require('./navigation');
 require('./book');
 require('./genericItem');
@@ -14,12 +16,12 @@ require('./genericItem');
 var libraryApp = angular.module('libraryApp', [
 	angularMaterial,
 	angularRoute,
+	'libraryApp.directiveModule',
+	'libraryApp.serviceModule',
+	'libraryApp.navigationModule',
 	'libraryApp.bookModule',
-	'libraryApp.genericItemModule',
-	'libraryApp.navigationModule'
+	'libraryApp.genericItemModule'
 ]);
-
-libraryApp.directive('ngLoad', ['$parse', require('./directive/ngLoad')]);
 
 // Global routing
 libraryApp.config(['$routeProvider',
@@ -33,6 +35,6 @@ libraryApp.config(['$routeProvider',
 // Material design theming
 libraryApp.config(function ($mdThemingProvider) {
 	$mdThemingProvider.theme('default')
-		.primaryPalette('blue')
-		.accentPalette('orange');
+		.primaryPalette('teal')
+		.accentPalette('blue');
 });

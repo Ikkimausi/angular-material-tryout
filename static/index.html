@@ -17,8 +17,10 @@
 	<script src="http://localhost:35729/livereload.js"></script>
 </head>
 <body ng-app="libraryApp">
-	<div ng-include="'partials/navigation/tabs.html'"></div>
-	<div ng-view flex></div>
+	<div layout='column' layout-fill>
+		<div ng-include="'partials/navigation/tabs.html'"></div>
+		<md-content ng-view flex></md-content>
+	</div>
 
 	<script src="js/bundle.js"></script>
 </body>

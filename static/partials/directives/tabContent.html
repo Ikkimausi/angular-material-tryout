@@ -1,0 +1,15 @@
+<md-input-container ng-show="editable">
+	<label for="label">Label</label>
+	<input type="text" id="label" ng-model="tab.label" md-autofocus>
+</md-input-container>
+<md-input-container>
+	<label for="imageUrl">Path for images (imageWidth, imageHeight and index are used as
+		placeholder)</label>
+	<input type="url" id="imageUrl" ng-model="tab.url"
+	       placeholder="http://placekitten.com/imageWidth/imageHeight?image=index">
+</md-input-container>
+<md-input-container>
+	<label for="maxCount">Maximum available images</label>
+	<input type="number" id="maxCount" min="0" ng-model="tab.maxCount">
+</md-input-container>
+

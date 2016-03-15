@@ -13,22 +13,7 @@ require('./controller');
 // Submodule routing
 genericItemModule.config(['$routeProvider',
 	function ($routeProvider) {
-		$routeProvider.when('/generic/kittens', {
-			templateUrl: 'partials/genericItem/grid.html',
-			action: 'genericItemCtrl'
-		}).when('/generic/dogs', {
-			templateUrl: 'partials/genericItem/grid.html',
-			action: 'genericItemCtrl'
-		}).when('/generic/skulls', {
-			templateUrl: 'partials/genericItem/grid.html',
-			action: 'genericItemCtrl'
-		}).when('/generic/bees', {
-			templateUrl: 'partials/genericItem/grid.html',
-			action: 'genericItemCtrl'
-		}).when('/generic/architecture', {
-			templateUrl: 'partials/genericItem/grid.html',
-			action: 'genericItemCtrl'
-		}).when('/generic/food', {
+		$routeProvider.when('/generic/:imageLabel', {
 			templateUrl: 'partials/genericItem/grid.html',
 			action: 'genericItemCtrl'
 		})

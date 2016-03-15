@@ -1,0 +1,25 @@
+<md-dialog ng-cloak aria-label="Creating a new tab">
+	<md-toolbar>
+		<div class="md-toolbar-tools">
+			<h2 flex>Creating a new tab</h2>
+			<md-button class="md-icon-button" ng-click="cancel()">
+				<md-icon md-font-library="material-icons">close</md-icon>
+			</md-button>
+		</div>
+	</md-toolbar>
+	<md-dialog-content>
+		<div class="md-dialog-content">
+			<my-tab-content tab="tab" editable="true"></my-tab-content>
+		</div>
+	</md-dialog-content>
+	<md-dialog-actions class="md-actions">
+		<span flex></span>
+		<md-button ng-click="cancel()">
+			Cancel
+		</md-button>
+		<md-button ng-click="createTab(tab)">
+			Create
+		</md-button>
+	</md-dialog-actions>
+</md-dialog>
+
