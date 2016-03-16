@@ -9,11 +9,11 @@
 	</md-toolbar>
 	<md-dialog-content>
 		<div class="md-dialog-content">
-			<my-tab-content tab="tab" editable="true"></my-tab-content>
+			<my-tab-content tab="tab" editable="true" ng-click="showError = false"></my-tab-content>
 		</div>
 	</md-dialog-content>
 	<md-dialog-actions class="md-actions">
-		<span flex></span>
+		<span flex ng-show="showError" class="error">{{error}}</span>
 		<md-button ng-click="cancel()">Cancel</md-button>
 		<md-button ng-click="createTab(tab)">Create</md-button>
 	</md-dialog-actions>
