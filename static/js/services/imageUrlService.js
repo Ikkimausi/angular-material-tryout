@@ -4,7 +4,6 @@ const BASE_URI = "http://localhost:4000/api/imageUrls/";
 const ITEM_COUNT = 20;
 
 module.exports = function ($http) {
-
 	this.getImageUrls = function () {
 		return $http.get(BASE_URI).then(function (response) {
 			return response.data;
@@ -24,7 +23,6 @@ module.exports = function ($http) {
 	};
 
 	this.getImages = function (imageLabel, imageWidth, imageHeight) {
-		console.log(imageLabel)
 		return $http.get(BASE_URI + imageLabel).then(function (response) {
 			var imageUrl = response.data.url;
 			var maxCount = response.data.maxCount;
@@ -39,7 +37,7 @@ module.exports = function ($http) {
 					index -= maxCount;
 				}
 				var item = imageUrl.replace("index", index);
-				items.push({label: imageLabel, url: item, itemNumber: index});
+				items.push({label: imageLabel, url: item, itemNumber: i});
 			}
 
 			return items;
