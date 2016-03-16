@@ -13,7 +13,7 @@
 			           ng-disabled="( tabs | filter:tabFilter).length < 2">
 				<md-option ng-value="tab" ng-repeat="tab in tabs | filter:tabFilter">{{tab.label}}</md-option>
 			</md-select>
-			<my-tab-content tab="tab" editable="false" ng></my-tab-content>
+			<my-tab-content tab="tab" editable="false"></my-tab-content>
 		</div>
 	</md-dialog-content>
 	<md-dialog-actions class="md-actions">
