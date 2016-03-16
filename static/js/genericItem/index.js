@@ -2,7 +2,6 @@
 
 // Load modules
 var angular = require('angular');
-var angularRoute = require('angular-route');
 
 // Define module
 var genericItemModule = angular.module('libraryApp.genericItemModule', []);
