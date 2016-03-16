@@ -8,14 +8,14 @@
 		</div>
 	</md-toolbar>
 	<md-dialog-content>
-		<div class="md-dialog-content">
-			<my-tab-content tab="tab" editable="true" ng-click="showError = false"></my-tab-content>
-		</div>
+		<form name="content" class="md-dialog-content" ng-click="showError = false">
+			<my-tab-content tab="tab" editable="true"></my-tab-content>
+		</form>
 	</md-dialog-content>
 	<md-dialog-actions class="md-actions">
 		<span flex ng-show="showError" class="error">{{error}}</span>
 		<md-button ng-click="cancel()">Cancel</md-button>
-		<md-button ng-click="createTab(tab)">Create</md-button>
+		<md-button ng-click="createTab(tab)" ng-disabled="!content.$valid">Create</md-button>
 	</md-dialog-actions>
 </md-dialog>
 
