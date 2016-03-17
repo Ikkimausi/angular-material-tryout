@@ -1,13 +1,23 @@
 @import 'node_modules/angular-material/angular-material.scss';
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 
+$fadeInTransition : all linear .3s;
+
 .genericItem:hover img {
   padding: 5px;
   border: 1px solid black;
   background: white;
   z-index: 200;
   transform: scale(1.2);
-  transition: all linear 0.3s;
+  transition: #{$fadeInTransition};
+}
+
+.genericItem .ng-hide-remove {
+  transition: #{$fadeInTransition};
+}
+
+.genericItem img.ng-hide {
+  opacity: 0;
 }
 
 .error.ng-hide {
@@ -18,5 +28,5 @@
   opacity: 1;
   color: red;
   font-size: small;
-  transition: all linear .3s;
+  transition: #{$fadeInTransition};
 }
