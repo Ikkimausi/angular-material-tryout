@@ -1,6 +1,7 @@
 'use strict';
 
 module.exports = function ($scope, $mdDialog, imageUrlService) {
+	$scope.title = 'Creating a new tab';
 	$scope.error = "";
 	$scope.showError = false;
 
@@ -10,14 +11,10 @@ module.exports = function ($scope, $mdDialog, imageUrlService) {
 		maxCount: 0
 	};
 
-	$scope.cancel = function() {
-		$mdDialog.cancel();
-	};
-
-	$scope.createTab = function(tab) {
-		imageUrlService.createImageUrl(tab).then(function(response){
+	$scope.createTab = function (tab) {
+		imageUrlService.createImageUrl(tab).then(function (response) {
 			$mdDialog.hide(response);
-		},function(response){
+		}, function (response) {
 			$scope.error = response.data;
 			$scope.showError = true;
 		});

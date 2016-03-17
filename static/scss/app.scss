@@ -13,10 +13,10 @@
 .error.ng-hide {
   opacity: 0;
 }
+
 .error {
   opacity: 1;
   color: red;
   font-size: small;
-  transform: rotate(360deg);
   transition: all linear .3s;
 }

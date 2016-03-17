@@ -1,26 +1,17 @@
-<md-dialog ng-cloak aria-label="Editing an existing tab">
-	<md-toolbar>
-		<div class="md-toolbar-tools" key>
-			<h2 flex>Editing an existing tab</h2>
-			<md-button class="md-icon-button" ng-click="cancel()">
-				<md-icon md-font-library="material-icons">close</md-icon>
-			</md-button>
-		</div>
-	</md-toolbar>
+<md-dialog aria-label="{{title}}">
+	<my-dialog-header title="title"></my-dialog-header>
 	<md-dialog-content>
-		<form name="content" class="md-dialog-content">
+		<form name="content" class="md-dialog-content" ng-click="showError = false">
 			<md-select placeholder="Select a tab to edit" ng-model="tab" ng-model-options="{trackBy: '$value.label'}"
-			           ng-disabled="( tabs | filter:tabFilter).length < 2">
-				<md-option ng-value="tab" ng-repeat="tab in tabs | filter:tabFilter">{{tab.label}}</md-option>
+			           ng-disabled="tabs.length < 2">
+				<md-option ng-value="tab" ng-repeat="tab in tabs">{{tab.label}}</md-option>
 			</md-select>
-			<my-tab-content tab="tab" editable="false"></my-tab-content>
+			<my-tab-content tab="tab" editable="true"></my-tab-content>
 		</form>
 	</md-dialog-content>
-	<md-dialog-actions class="md-actions">
-		<span flex></span>
-		<md-button ng-click="cancel()">Cancel</md-button>
+	<my-dialog-footer class="md-actions" show-error="showError" error="error">
 		<md-button ng-click="deleteTab(tab)" ng-disabled="!tabEditable(tab)">Delete</md-button>
-		<md-button ng-click="saveTab(tab)" ng-disabled="!tabEditable(tab) && !content.$valid">Save</md-button>
-	</md-dialog-actions>
+		<md-button ng-click="saveTab(tab)" ng-disabled="!tabEditable(tab) || content.$invalid">Save</md-button>
+	</my-dialog-footer>
 </md-dialog>
 
