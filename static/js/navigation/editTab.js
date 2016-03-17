@@ -6,16 +6,10 @@ module.exports = function ($scope, $filter, $mdDialog, imageUrlService, selected
 	$scope.error = "";
 	$scope.showError = false;
 
-	$scope.tabEditable = function tabEditable(tab) {
-		return tab != null && tab != undefined && tab.editable;
-	};
+	$scope.tabEditable = tabEditable;
 
 	$scope.deleteTab = function (tab) {
-		imageUrlService.deleteImageUrl(tab).then(function (response) {
-			$mdDialog.hide(tab);
-		}, function (response) {
-			setError($scope, response.data);
-		});
+		imageUrlService.deleteImageUrl(tab).then(successHandler, errorHandler);
 	};
 
 	$scope.saveTab = function (tab) {
@@ -24,21 +18,28 @@ module.exports = function ($scope, $filter, $mdDialog, imageUrlService, selected
 		}
 
 		if (tab.url == selectedTab.url && tab.maxCount == selectedTab.maxCount) {
-			$mdDialog.hide(tab);
-		}
-		else {
-			imageUrlService.updateImageUrl(tab).then(function (response) {
-				$mdDialog.hide(tab);
-			}, function (response) {
-				setError($scope, response.data);
-			});
+			successHandler()
+		} else {
+			imageUrlService.updateImageUrl(tab).then(successHandler, errorHandler);
 		}
 	};
 
 	imageUrlService.getImageUrls().then(function (response) {
-		$scope.tabs = $filter('filter')(response, $scope.tabEditable);
+		$scope.tabs = $filter('filter')(response, tabEditable);
 	});
+
+	let successHandler = function () {
+		$mdDialog.hide($scope.tab);
+	};
+
+	let errorHandler = function (response) {
+		setError($scope, response.data);
+	};
 };
+
+function tabEditable(tab) {
+	return tab != null && tab != undefined && tab.editable;
+}
 
 function setError($scope, error) {
 	$scope.error = error;

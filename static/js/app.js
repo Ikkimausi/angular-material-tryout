@@ -13,7 +13,7 @@ require('./book');
 require('./genericItem');
 
 // Define app
-var libraryApp = angular.module('libraryApp', [
+let libraryApp = angular.module('libraryApp', [
 	angularMaterial,
 	angularRoute,
 	'libraryApp.directiveModule',

@@ -24,19 +24,19 @@ module.exports = function ($http) {
 
 	this.getImages = function (imageLabel, imageWidth, imageHeight) {
 		return $http.get(BASE_URI + imageLabel).then(function (response) {
-			var imageUrl = response.data.url;
-			var maxCount = response.data.maxCount;
+			let imageUrl = response.data.url;
+			let maxCount = response.data.maxCount;
 
 			imageUrl = imageUrl.replace("imageWidth", imageWidth);
 			imageUrl = imageUrl.replace("imageHeight", imageHeight);
 
-			var items = [];
-			for (var i = 1; i <= ITEM_COUNT; i++) {
-				var index = i;
+			let items = [];
+			for (let i = 1; i <= ITEM_COUNT; i++) {
+				let index = i;
 				while (index > maxCount) {
 					index -= maxCount;
 				}
-				var item = imageUrl.replace("index", index);
+				let item = imageUrl.replace("index", index);
 				items.push({label: imageLabel, url: item, itemNumber: i});
 			}
 

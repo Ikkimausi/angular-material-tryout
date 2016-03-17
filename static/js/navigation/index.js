@@ -1,9 +1,9 @@
 'use strict';
 
 // Load modules
-var angular = require('angular');
+let angular = require('angular');
 
 // Define module
-var navigationModule = angular.module('libraryApp.navigationModule', []);
+let navigationModule = angular.module('libraryApp.navigationModule', []);
 
 navigationModule.controller('navigationCtrl', ['$scope', '$location', '$route', '$mdDialog', 'imageUrlService', require('./tabs')]);

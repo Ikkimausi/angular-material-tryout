@@ -1,8 +1,8 @@
 'use strict';
 
-var angular = require('angular');
+let angular = require('angular');
 
 // Define app
-var serviceModule = angular.module('libraryApp.serviceModule', []);
+let serviceModule = angular.module('libraryApp.serviceModule', []);
 
 serviceModule.service('imageUrlService', ['$http', require('./imageUrlService')]);

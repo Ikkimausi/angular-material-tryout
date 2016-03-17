@@ -1,10 +1,10 @@
 'use strict';
 
 // Load modules
-var angular = require('angular');
+let angular = require('angular');
 
 // Define module
-var genericItemModule = angular.module('libraryApp.genericItemModule', []);
+let genericItemModule = angular.module('libraryApp.genericItemModule', []);
 
 // Load module parts
 require('./controller');

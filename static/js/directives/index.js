@@ -1,9 +1,9 @@
 'use strict';
 
-var angular = require('angular');
+let angular = require('angular');
 
 // Define app
-var directiveModule = angular.module('libraryApp.directiveModule', []);
+let directiveModule = angular.module('libraryApp.directiveModule', []);
 
 directiveModule.directive('myLoad', ['$parse', require('./load')]);
 directiveModule.directive('myImageGridTile', [require('./imageGridTile')]);

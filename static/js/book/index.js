@@ -1,26 +1,23 @@
 'use strict';
 
 // Load modules
-var angular = require('angular');
-var angularRoute = require('angular-route');
+let angular = require('angular');
 
 // Define module
-var bookModule = angular.module('libraryApp.bookModule', []);
+let bookModule = angular.module('libraryApp.bookModule', []);
 
 // Load module parts
 require('./controller');
 
 // Submodule routing
 bookModule.config(['$routeProvider',
-  function($routeProvider) {
-    $routeProvider.
-      when('/books', {
-        templateUrl: 'partials/book/list.html',
-        action: 'listCtrl'
-      }).
-      when('/books/:isbn', {
-        templateUrl: 'partials/book/detail.html',
-        action: 'detailCtrl'
-      });
-  }]
+	function ($routeProvider) {
+		$routeProvider.when('/books', {
+			templateUrl: 'partials/book/list.html',
+			action: 'listCtrl'
+		}).when('/books/:isbn', {
+			templateUrl: 'partials/book/detail.html',
+			action: 'detailCtrl'
+		});
+	}]
 );

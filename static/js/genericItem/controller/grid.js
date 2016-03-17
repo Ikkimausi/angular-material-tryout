@@ -9,8 +9,7 @@ module.exports = function ($scope, $location, $routeParams, imageUrlService) {
 	$scope.ratio = IMG_WIDTH + ':' + IMG_HEIGHT;
 
 	$scope.getRow = function (index) {
-		var position = index + 1;
-		return Math.ceil(position / COLUMN_COUNT);
+		return Math.ceil((index + 1) / COLUMN_COUNT);
 	};
 
 	$scope.getColumn = function (index) {
