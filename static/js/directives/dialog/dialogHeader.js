@@ -4,7 +4,7 @@ module.exports = function () {
 	return {
 		restrict: 'E',
 		scope: {
-			title: '='
+			title: '@'
 		},
 		templateUrl: '../../../partials/directives/dialogHeader.html',
 		controller: ['$scope', '$mdDialog', require('./dialogController')]

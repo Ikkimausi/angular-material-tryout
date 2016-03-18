@@ -6,7 +6,7 @@ module.exports = function () {
 		transclude: true,
 		scope: {
 			showError: '=',
-			error: '='
+			error: '@'
 		},
 		templateUrl: '../../../partials/directives/dialogFooter.html',
 		controller: ['$scope', '$mdDialog', require('./dialogController')]

@@ -9,18 +9,9 @@
 				<md-icon md-font-library="material-icons">more_vert</md-icon>
 			</md-button>
 			<md-menu-content>
-				<md-menu-item>
-					<md-button ng-click="openNewTabDialog()">
-						<md-icon md-font-library="material-icons">add</md-icon>
-						<span>Add new tab</span>
-					</md-button>
-				</md-menu-item>
-				<md-menu-item>
-					<md-button ng-click="openEditTabDialog()" ng-disabled="!editableTabsAvailable">
-						<md-icon md-font-library="material-icons">mode_edit</md-icon>
-						<span>Edit tabs</span>
-					</md-button>
-				</md-menu-item>
+				<my-menu-button ng-click="openNewTabDialog()" icon="add" label="Add new tab"></my-menu-button>
+				<my-menu-button ng-click="openEditTabDialog()" ng-disabled="!editableTabsAvailable"
+				                icon="mode_edit" label="Edit tabs"></my-menu-button>
 			</md-menu-content>
 		</md-menu>
 	</md-toolbar>

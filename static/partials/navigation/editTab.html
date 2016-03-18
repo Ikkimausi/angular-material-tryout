@@ -1,5 +1,5 @@
 <md-dialog aria-label="{{title}}">
-	<my-dialog-header title="title"></my-dialog-header>
+	<my-dialog-header title="{{title}}"></my-dialog-header>
 	<md-dialog-content>
 		<form name="content" class="md-dialog-content" ng-click="showError = false">
 			<md-select placeholder="Select a tab to edit" ng-model="tab" ng-model-options="{trackBy: '$value.label'}"
@@ -9,7 +9,7 @@
 			<my-tab-content tab="tab" editable="true"></my-tab-content>
 		</form>
 	</md-dialog-content>
-	<my-dialog-footer class="md-actions" show-error="showError" error="error">
+	<my-dialog-footer class="md-actions" show-error="showError" error="{{error}}">
 		<md-button ng-click="deleteTab(tab)" ng-disabled="!tabEditable(tab)">Delete</md-button>
 		<md-button ng-click="saveTab(tab)" ng-disabled="!tabEditable(tab) || content.$invalid">Save</md-button>
 	</my-dialog-footer>
