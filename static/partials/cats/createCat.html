@@ -1,0 +1,48 @@
+<form name="content" ng-controller="createCatCtrl">
+	<md-input-container>
+		<label for="naam">Naam</label>
+		<input type="text" id="naam" ng-model="cat.naam">
+	</md-input-container>
+	<md-datepicker ng-model="cat.geboortedatum" md-placeholder="Geboortedatum"></md-datepicker>
+	<md-radio-group ng-model="cat.geslacht" layout="row">
+		<md-radio-button value="man">Man</md-radio-button>
+		<md-radio-button value="vrouw">Vrouw</md-radio-button>
+	</md-radio-group>
+	<md-input-container>
+		<md-checkbox id="gesteriliseerd" ng-model="cat.gesteriliseerd" aria-label="Gesteriliseerd?">Gesteriliseerd?</md-checkbox>
+	</md-input-container>
+	<md-input-container>
+		<label for="foto">Foto (url)</label>
+		<input type="text" id="foto" ng-model="cat.foto">
+	</md-input-container>
+	<md-input-container>
+		<label for="ras">Ras</label>
+		<textarea type="text" id="ras" ng-model="cat.ras"></textarea>
+	</md-input-container>
+	<md-input-container>
+		<label for="voeding">Voeding</label>
+		<textarea type="text" id="voeding" ng-model="cat.voeding"></textarea>
+	</md-input-container>
+	<md-input-container>
+		<label for="gedrag">Gedrag</label>
+		<input type="text" id="gedrag" ng-model="cat.gedrag">
+	</md-input-container>
+	<md-input-container>
+		<label for="dierenarts">Dierenarts</label>
+		<input type="text" id="dierenarts" ng-model="cat.dierenarts">
+	</md-input-container>
+	<md-input-container>
+		<label for="medicatie">Medicatie</label>
+		<input type="text" id="medicatie" ng-model="cat.medicatie">
+	</md-input-container>
+	<md-input-container>
+		<label>Eigenaar</label>
+		<md-select ng-model="cat.eigenaar">
+			<md-option ng-repeat="owner in owners" value="{{owner.naam}}" ng-disabled="$index === 1">
+				{{owner.name}}
+			</md-option>
+		</md-select>
+	</md-input-container>
+	<md-button ng-click="cancelCat()">Annuleer</md-button>
+	<md-button ng-click="saveCat()">Registreer kat</md-button>
+</form>

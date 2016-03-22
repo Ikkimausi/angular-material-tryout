@@ -9,8 +9,8 @@ module.exports = 'ngMaterial';
 require('./directives');
 require('./services');
 require('./navigation');
-require('./book');
-require('./genericItem');
+require('./cats');
+require('./owners');
 
 // Define app
 let libraryApp = angular.module('libraryApp', [
@@ -19,15 +19,15 @@ let libraryApp = angular.module('libraryApp', [
 	'libraryApp.directiveModule',
 	'libraryApp.serviceModule',
 	'libraryApp.navigationModule',
-	'libraryApp.bookModule',
-	'libraryApp.genericItemModule'
+	'libraryApp.catModule',
+	'libraryApp.ownerModule'
 ]);
 
 // Global routing
 libraryApp.config(['$routeProvider',
 	function ($routeProvider) {
 		$routeProvider.otherwise({
-			redirectTo: '/books'
+			redirectTo: '/cats'
 		});
 	}]
 );

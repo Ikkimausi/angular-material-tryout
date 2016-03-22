@@ -6,7 +6,7 @@ module.exports = function () {
 		scope: {
 			title: '@'
 		},
-		templateUrl: '../../../partials/directives/dialogHeader.html',
+		templateUrl: '../../../partials/directives/dialog/dialogHeader.html',
 		controller: ['$scope', '$mdDialog', require('./dialogController')]
 	}
 };

@@ -3,20 +3,11 @@
 
 $fadeInTransition : all linear .3s;
 
-.genericItem:hover img {
-  padding: 5px;
-  border: 1px solid black;
-  background: white;
-  z-index: 200;
-  transform: scale(1.2);
+.ng-hide-remove {
   transition: #{$fadeInTransition};
 }
 
-.genericItem .ng-hide-remove {
-  transition: #{$fadeInTransition};
-}
-
-.genericItem img.ng-hide {
+img.ng-hide {
   opacity: 0;
 }
 

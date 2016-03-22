@@ -1,7 +1,7 @@
-<div class="genericItem">
-	<md-grid-tile-header class="layout-align-center">{{ image.itemNumber }}</md-grid-tile-header>
+<div>
+	<md-grid-tile-header class="layout-align-center">{{label}}</md-grid-tile-header>
 	<md-card>
-		<img ng-src="{{image.url}}" alt="{{image.label}} {{image.itemNumber}}"
+		<img ng-src="{{imageUrl}}" alt="{{label}}"
 		     ng-init="imgLoading = true" my-load="imgLoading = false"
 		     ng-show="!imgLoading"/>
 	</md-card>

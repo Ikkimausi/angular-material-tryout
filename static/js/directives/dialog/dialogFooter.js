@@ -8,7 +8,7 @@ module.exports = function () {
 			showError: '=',
 			error: '@'
 		},
-		templateUrl: '../../../partials/directives/dialogFooter.html',
+		templateUrl: '../../../partials/directives/dialog/dialogFooter.html',
 		controller: ['$scope', '$mdDialog', require('./dialogController')]
 	}
 };
