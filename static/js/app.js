@@ -3,6 +3,7 @@
 let angular = require('angular');
 let angularMaterial = require('angular-material');
 let angularRoute = require('angular-route');
+let ngFileUpload = require('ng-file-upload');
 module.exports = 'ngMaterial';
 
 // Load modules
@@ -16,6 +17,7 @@ require('./owners');
 let libraryApp = angular.module('libraryApp', [
 	angularMaterial,
 	angularRoute,
+	ngFileUpload,
 	'libraryApp.directiveModule',
 	'libraryApp.serviceModule',
 	'libraryApp.navigationModule',

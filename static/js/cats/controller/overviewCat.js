@@ -4,7 +4,7 @@ const COLUMN_COUNT = 4;
 const IMG_WIDTH = 400;
 const IMG_HEIGHT = 400;
 
-module.exports = function ($scope) {
+module.exports = function ($scope, catService) {
 	$scope.columns = COLUMN_COUNT;
 	$scope.ratio = IMG_WIDTH + ':' + IMG_HEIGHT;
 
@@ -15,4 +15,8 @@ module.exports = function ($scope) {
 	$scope.getColumn = function (index) {
 		return (index % COLUMN_COUNT) + 1;
 	};
+
+	catService.getCats().then(function (cats) {
+		$scope.cats = cats;
+	})
 };

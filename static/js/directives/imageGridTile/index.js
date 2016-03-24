@@ -4,7 +4,7 @@ module.exports = function () {
 	return {
 		restrict: 'E',
 		scope: {
-			imageUrl: '@',
+			picture: '@',
 			label: '@'
 		},
 		templateUrl: '../../../partials/directives/imageGridTile.html'

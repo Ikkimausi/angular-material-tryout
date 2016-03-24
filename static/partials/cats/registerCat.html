@@ -1,0 +1,58 @@
+<div ng-controller="createCatCtrl" layout="column" ng-cloak class="md-inline-form">
+	<md-content layout-padding>
+		<form name="catForm" enctype="multipart/form-data">
+			<div layout-gt-sm="row">
+				<md-input-container class="md-block" flex-gt-sm>
+					<label>Naam</label>
+					<input type="text" ng-model="cat.naam" required>
+				</md-input-container>
+				<md-datepicker ng-model="cat.geboortedatum" md-placeholder="Geboortedatum"
+				               class="md-block"></md-datepicker>
+			</div>
+			<div layout-gt-sm="row">
+				<img ng-show="foto != undefined"
+				     ngf-thumbnail="foto"
+				     style="max-width: 200px; max-height: 200px; object-fit: contain">
+				<input type="file" ngf-select ng-model="foto" name="file"
+				       accept="image/jpeg" ngf-max-size="4MB" required>
+			</div>
+			<div layout-gt-sm="column">
+				<md-radio-group ng-model="cat.geslacht" layout="row">
+					<md-radio-button value="man">Man</md-radio-button>
+					<md-radio-button value="vrouw">Vrouw</md-radio-button>
+				</md-radio-group>
+				<md-checkbox ng-model="cat.gesteriliseerd" aria-label="Gesteriliseerd?">
+					Gesteriliseerd?
+				</md-checkbox>
+			</div>
+			<md-input-container class="md-block" flex-gt-sm>
+				<label>Voeding</label>
+				<textarea type="text" ng-model="cat.voeding"></textarea>
+			</md-input-container>
+			<md-input-container class="md-block" flex-gt-sm>
+				<label>Gedrag</label>
+				<input type="text" ng-model="cat.gedrag">
+			</md-input-container>
+			<div layout-gt-sm="row">
+				<md-input-container class="md-block" flex-gt-sm>
+					<label>Medicatie</label>
+					<input type="text" ng-model="cat.medicatie">
+				</md-input-container>
+				<md-input-container class="md-block" flex-gt-sm>
+					<label>Dierenarts</label>
+					<input type="text" ng-model="cat.dierenarts">
+				</md-input-container>
+			</div>
+			<md-input-container class="md-block" flex-gt-sm>
+				<label>Eigenaar</label>
+				<md-select ng-model="cat.eigenaar">
+					<md-option ng-repeat="owner in owners" value="{{owner.naam}}" ng-disabled="$index === 1">
+						{{owner.name}}
+					</md-option>
+				</md-select>
+			</md-input-container>
+		</form>
+		<md-button ng-click="cancelCat()">Annuleer</md-button>
+		<md-button ng-click="saveCat()" ng-disabled="!catForm.$valid">Registreer kat</md-button>
+	</md-content>
+</div>
