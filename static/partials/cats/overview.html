@@ -1,8 +1,0 @@
-<div ng-controller="overviewCatCtrl">
-	<md-grid-list md-cols="{{columns}}" md-row-height-gt-sm="{{ratio}}">
-		<md-grid-tile ng-repeat="cat in cats track by $index"
-		              md-rowspan-gt-sm=="{{getRow($index)}}" md-colspan-gt-sm=="{{getColumn($index)}}">
-			<my-image-grid-tile label="{{cat.naam}}" picture="data:image/jpeg;base64,{{cat.foto}}"></my-image-grid-tile>
-		</md-grid-tile>
-	</md-grid-list>
-</div>

@@ -1,0 +1,17 @@
+<md-card style="height: 100%" layout="column" flex>
+	<md-card-content>
+		<md-card-title-media>
+			<div class="md-media-lg card-media">
+				<img ng-src="data:image/jpeg;base64,{{cat.foto}}" alt="{{cat.naam}}"
+				     ng-init="imgLoading = true" my-load="imgLoading = false"
+				     ng-show="!imgLoading" style="max-height: 300px;max-width: 300px"/>
+				<md-progress-circular md-mode="indeterminate" ng-show="imgLoading"></md-progress-circular>
+			</div>
+	</md-card-content>
+	<md-card-title layout-padding>
+		<md-card-title-text flex="35">
+			<span class="md-headline">{{cat.naam}}</span>
+			<span class="md-subhead">{{cat.geboortedatum}}</span>
+		</md-card-title-text>
+	</md-card-title>
+</md-card>

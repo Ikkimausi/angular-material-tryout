@@ -13,7 +13,7 @@ require('./controller');
 catModule.config(['$routeProvider',
 	function ($routeProvider) {
 		$routeProvider.when('/owners/', {
-			templateUrl: 'partials/owners/overview.html',
+			templateUrl: '../../partials/owners/overviewOwner.html',
 			action: 'overviewOwnerCtrl'
 		}).when('/owners/create', {
 			templateUrl: '../../partials/owners/registerOwner.html',

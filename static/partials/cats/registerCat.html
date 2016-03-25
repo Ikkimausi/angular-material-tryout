@@ -2,19 +2,21 @@
 	<md-content layout-padding>
 		<form name="catForm" enctype="multipart/form-data">
 			<div layout-gt-sm="row">
+				<text-with-label label="Naam" model="cat.naam" required="true" flex></text-with-label>
 				<md-input-container class="md-block" flex-gt-sm>
-					<label>Naam</label>
-					<input type="text" ng-model="cat.naam" required>
+					<label>Geboortedatum</label>
+					<input type="text" name="geboortedatum" mask="39/19/2999" placeholder="01/01/2000"
+					       ng-model="cat.geboortedatum" required>
 				</md-input-container>
-				<md-datepicker ng-model="cat.geboortedatum" md-placeholder="Geboortedatum"
-				               class="md-block"></md-datepicker>
 			</div>
-			<div layout-gt-sm="row">
-				<img ng-show="foto != undefined"
-				     ngf-thumbnail="foto"
-				     style="max-width: 200px; max-height: 200px; object-fit: contain">
+			<div layout-gt-sm="column">
 				<input type="file" ngf-select ng-model="foto" name="file"
-				       accept="image/jpeg" ngf-max-size="4MB" required>
+				       accept="image/jpeg" ngf-max-size="15MB" required>
+				<img ngf-thumbnail="foto"
+				     ng-init="imgLoading = true" my-load="imgLoading = false"
+				     ng-show="foto != undefined&&!imgLoading" style="max-height: 300px;max-width: 300px"/>
+				<md-progress-circular md-mode="indeterminate"
+				                      ng-show="foto != undefined && imgLoading"></md-progress-circular>
 			</div>
 			<div layout-gt-sm="column">
 				<md-radio-group ng-model="cat.geslacht" layout="row">
@@ -25,23 +27,12 @@
 					Gesteriliseerd?
 				</md-checkbox>
 			</div>
-			<md-input-container class="md-block" flex-gt-sm>
-				<label>Voeding</label>
-				<textarea type="text" ng-model="cat.voeding"></textarea>
-			</md-input-container>
-			<md-input-container class="md-block" flex-gt-sm>
-				<label>Gedrag</label>
-				<input type="text" ng-model="cat.gedrag">
-			</md-input-container>
+			<text-area-with-label label="Voeding" model="cat.voeding" required="false" flex></text-area-with-label>
+			<text-with-label label="Gedrag" model="cat.gedrag" required="false"></text-with-label>
 			<div layout-gt-sm="row">
-				<md-input-container class="md-block" flex-gt-sm>
-					<label>Medicatie</label>
-					<input type="text" ng-model="cat.medicatie">
-				</md-input-container>
-				<md-input-container class="md-block" flex-gt-sm>
-					<label>Dierenarts</label>
-					<input type="text" ng-model="cat.dierenarts">
-				</md-input-container>
+				<text-area-with-label label="Medicatie" model="cat.medicatie" required="false"
+				                      flex></text-area-with-label>
+				<text-with-label label="Dierenarts" model="cat.dierenarts" required="false" flex></text-with-label>
 			</div>
 			<md-input-container class="md-block" flex-gt-sm>
 				<label>Eigenaar</label>

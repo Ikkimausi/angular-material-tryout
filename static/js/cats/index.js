@@ -13,10 +13,10 @@ require('./controller');
 catModule.config(['$routeProvider',
 	function ($routeProvider) {
 		$routeProvider.when('/cats/', {
-			templateUrl: 'partials/cats/overview.html',
+			templateUrl: 'partials/cats/overviewCat.html',
 			action: 'overviewCatCtrl'
 		}).when('/cats/create', {
-			templateUrl: '../../partials/cats/registerCat.html',
+			templateUrl: 'partials/cats/registerCat.html',
 			action: 'createCatCtrl'
 		});
 	}]

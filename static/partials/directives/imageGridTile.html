@@ -1,9 +1,0 @@
-<div>
-	<md-grid-tile-header class="layout-align-center">{{label}}</md-grid-tile-header>
-	<md-card>
-		<img ng-src="{{picture}}" alt="{{label}}"
-		     ng-init="imgLoading = true" my-load="imgLoading = false"
-		     ng-show="!imgLoading"/>
-	</md-card>
-	<md-progress-circular md-mode="indeterminate" ng-show="imgLoading"></md-progress-circular>
-</div>

@@ -6,8 +6,13 @@ let angular = require('angular');
 let directiveModule = angular.module('libraryApp.directiveModule', []);
 
 directiveModule.directive('myLoad', ['$parse', require('./load')]);
-directiveModule.directive('myImageGridTile', [require('./imageGridTile')]);
 directiveModule.directive('myTab', [require('./tab')]);
+directiveModule.directive('myMenuButton', [require('./menuButton')]);
+
+directiveModule.directive('textWithLabel', [require('./input/textWithLabel')]);
+directiveModule.directive('textAreaWithLabel', [require('./input/textAreaWithLabel')]);
+
 directiveModule.directive('myDialogHeader', [require('./dialog/dialogHeader')]);
 directiveModule.directive('myDialogFooter', [require('./dialog/dialogFooter')]);
-directiveModule.directive('myMenuButton', [require('./menuButton')]);
+
+directiveModule.directive('catTile', [require('./cats/catTile')]);

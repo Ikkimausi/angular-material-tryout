@@ -1,14 +1,18 @@
 @import 'node_modules/angular-material/angular-material.scss';
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 
-$fadeInTransition : all linear .3s;
+$fadeInTransition: all linear .3s;
 
-.ng-hide-remove {
-  transition: #{$fadeInTransition};
+img {
+  object-fit: contain;
 }
 
 img.ng-hide {
   opacity: 0;
+}
+
+.ng-hide-remove {
+  transition: #{$fadeInTransition};
 }
 
 .error.ng-hide {

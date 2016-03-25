@@ -25,10 +25,9 @@ module.exports = function ($scope, $location, catService) {
 			.then(function (response) {
 				$scope.cancelCat(); // Go to cats
 			}, function (response) {
-				console.log("error", response); // Do something
+				// Do something
 			}, function (evt) {
 				$scope.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
-				console.log("Progress", foto.progress);
 			});
 	};
 };
