@@ -15,9 +15,9 @@ catModule.config(['$routeProvider',
 		$routeProvider.when('/owners/', {
 			templateUrl: '../../partials/owners/overviewOwner.html',
 			action: 'overviewOwnerCtrl'
-		}).when('/owners/create', {
+		}).when('/owners/register', {
 			templateUrl: '../../partials/owners/registerOwner.html',
-			action: 'createOwnerCtrl'
+			action: 'registerOwnerCtrl'
 		});
 	}]
 );

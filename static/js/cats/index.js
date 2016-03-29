@@ -15,7 +15,7 @@ catModule.config(['$routeProvider',
 		$routeProvider.when('/cats/', {
 			templateUrl: 'partials/cats/overviewCat.html',
 			action: 'overviewCatCtrl'
-		}).when('/cats/create', {
+		}).when('/cats/register', {
 			templateUrl: 'partials/cats/registerCat.html',
 			action: 'createCatCtrl'
 		});

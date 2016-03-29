@@ -1,0 +1,20 @@
+<div layout-gt-sm="row">
+	<md-input-container class="md-block" flex-gt-sm layout-gt-sm="row">
+		<label>Dag</label>
+		<md-select ng-model="day" ng-required="{{required}}">
+			<md-option ng-repeat="day in days" ng-value="day">{{day}}</md-option>
+		</md-select>
+	</md-input-container>
+	<md-input-container class="md-block" flex-gt-sm layout-gt-sm="row">
+		<label>Maand</label>
+		<md-select ng-model="month" ng-required="{{required}}">
+			<md-option ng-repeat="month in months" ng-value="$index">{{month}}</md-option>
+		</md-select>
+	</md-input-container>
+	<md-input-container class="md-block" flex-gt-sm layout-gt-sm="row">
+		<label>Jaar</label>
+		<md-select ng-model="year" ng-required="{{required}}">
+			<md-option ng-repeat="year in years" ng-value="year">{{year}}</md-option>
+		</md-select>
+	</md-input-container>
+</div>

@@ -11,7 +11,7 @@
 	<md-card-title layout-padding>
 		<md-card-title-text flex="35">
 			<span class="md-headline">{{cat.naam}}</span>
-			<span class="md-subhead">{{cat.geboortedatum}}</span>
+			<span class="md-subhead">{{cat.geboortedatum | date: 'dd/MM/yyyy'}}</span>
 		</md-card-title-text>
 	</md-card-title>
 </md-card>

@@ -1,3 +1,5 @@
 <div ng-controller="overviewCatCtrl" layout="row" layout-margin layout-wrap layout-align="center">
-	<cat-tile ng-repeat="cat in cats " cat="cat"></cat-tile>
+	<cat-tile ng-repeat="cat in cats " cat="cat" ng-show="cats != null && cats.length > 0"></cat-tile>
+	<span class="md-headline" ng-show="cats.length == 0">Geen katten gevonden</span>
+	<md-progress-circular md-mode="indeterminate" ng-show="cats == null" md-diameter="200"></md-progress-circular>
 </div>
