@@ -2,7 +2,16 @@
 
 module.exports = function ($scope, catService) {
 	$scope.cats = null;
-	catService.getCats().then(function (cats) {
-		$scope.cats = cats;
-	})
+
+	let getCats = function () {
+		catService.getCats().then(function (cats) {
+			$scope.cats = cats;
+		});
+	};
+
+	$scope.$on('catDeleted', function (event, args) {
+		getCats();
+	});
+
+	getCats();
 };

@@ -14,4 +14,8 @@
 			<span class="md-subhead">{{cat.geboortedatum | date: 'dd/MM/yyyy'}}</span>
 		</md-card-title-text>
 	</md-card-title>
+	<md-card-actions layout="row" layout-align="end center">
+		<md-button>Pas aan</md-button>
+		<md-button ng-click="removeCat()">Verwijder</md-button>
+	</md-card-actions>
 </md-card>

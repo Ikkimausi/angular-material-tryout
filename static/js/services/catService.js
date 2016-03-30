@@ -21,8 +21,8 @@ module.exports = function ($http, Upload) {
 		return $http.put(BASE_URI + cat.id, cat);
 	};
 
-	this.deleteImageUrl = function (cat) {
-		return $http.delete(BASE_URI + cat.id);
+	this.deleteCat = function (cat) {
+		return $http.delete(BASE_URI + cat._id);
 	};
 }
 ;
