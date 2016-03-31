@@ -2,13 +2,17 @@
 
 module.exports = function () {
 	this.getTabs = function () {
-		return [createTab('cats'), createTab('owners'), createTab('registrations')];
+		return [createTab('Katten', 'cats', 'partials/cats/registerCat.html', require('../cats/controller/registerCat')),
+			createTab('Eigenaars', 'owners', 'partials/owners/registerOwner.html', require('../owners/controller/registerOwner')),
+			createTab('Verblijvingen', 'registrations')];
 	};
 };
 
-function createTab(label) {
+function createTab(label, path, template, ctrl) {
 	return {
 		label: label,
-		path: '/' + label
+		path: path,
+		templateUrl: template,
+		controller: ctrl
 	};
 }

@@ -4,8 +4,8 @@
 			<div class="md-media-lg card-media">
 				<img ng-src="data:image/jpeg;base64,{{cat.foto}}" alt="{{cat.naam}}"
 				     ng-init="imgLoading = true" my-load="imgLoading = false"
-				     ng-show="!imgLoading" style="max-height: 300px;max-width: 300px"/>
-				<md-progress-circular md-mode="indeterminate" ng-show="imgLoading"></md-progress-circular>
+				     ng-show="cat.foto && !imgLoading" style="max-height: 300px;max-width: 300px"/>
+				<md-progress-circular md-mode="indeterminate" ng-show="cat.foto&&imgLoading"></md-progress-circular>
 			</div>
 	</md-card-content>
 	<md-card-title layout-padding>
@@ -15,7 +15,7 @@
 		</md-card-title-text>
 	</md-card-title>
 	<md-card-actions layout="row" layout-align="end center">
-		<md-button>Pas aan</md-button>
+		<md-button>Details</md-button>
 		<md-button ng-click="removeCat()">Verwijder</md-button>
 	</md-card-actions>
 </md-card>

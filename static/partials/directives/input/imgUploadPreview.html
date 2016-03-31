@@ -1,0 +1,17 @@
+<div layout-gt-sm="column">
+	<div style="width: 300px;height: 300px;border: 1px solid black">
+		<img ngf-src="pictureModel"
+		     ng-init="imgLoading = true" my-load="imgLoading = false"
+		     ng-show="pictureModel != null && !imgLoading"
+		     style="max-height: 300px;max-width: 300px"/>
+		<md-progress-circular md-mode="indeterminate"
+		                      ng-show="pictureModel != null && imgLoading"></md-progress-circular>
+	</div>
+	<div class="error" ng-if="fotoError != null">
+		<div>{{fotoError}}</div>
+	</div>
+	<input type="file" ngf-select ng-model="pictureModel" name="file"
+	       accept="image/jpeg" required
+	       ng-change="fileSelected()"
+	       ng-click="inputClicked()">
+</div>

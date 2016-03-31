@@ -1,6 +1,7 @@
 'use strict';
 
-module.exports = function ($scope, $location, catService) {
+module.exports = function ($scope, $mdDialog, catService, ownerApiService, eventService) {
+	$scope.title = "Registreer kat";
 	$scope.today = new Date();
 	$scope.foto = null;
 	$scope.progress = 0;
@@ -16,35 +17,17 @@ module.exports = function ($scope, $location, catService) {
 		gedrag: ''
 	};
 
-	$scope.fileSelected = function () {
-		if (!$scope.foto) {
-			$scope.fotoError = "Gelieve een foto te selecteren";
-			return;
-		}
-
-		let size = ($scope.foto.size / (1024 * 1024)).toFixed(2);
-
-		if ($scope.foto.type != "image/jpeg") {
-			$scope.foto = null;
-			$scope.fotoError = "Verkeerd soort bestand, jpeg verplicht";
-		} else if (size > 15) {
-			$scope.foto = null;
-			$scope.fotoError = "Foto te groot, maximaal 15MB toegestaan";
-		} else {
-			$scope.fotoError = null;
-		}
-	};
-
-	$scope.cancelCat = function () {
-		let path = $location.path().replace('/register', "");
-		$location.path(path);
-	};
+	$scope.owners = null;
+	ownerApiService.getOwners().then(function (owners) {
+		$scope.owners = owners;
+	});
 
 	$scope.saveCat = function () {
 		catService.registerCat($scope.cat, $scope.foto)
 			.then(function (response) {
 				$scope.progress = 100;
-				$scope.cancelCat(); // Go to cats
+				eventService.dispatchEvent("cats.refresh");
+				$mdDialog.hide();
 			}, function (response) {
 				$scope.progress = 0;
 				// Do something

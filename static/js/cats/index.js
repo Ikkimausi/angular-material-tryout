@@ -4,7 +4,7 @@
 let angular = require('angular');
 
 // Define module
-let catModule = angular.module('libraryApp.catModule', []);
+let catModule = angular.module('libraryApp.catModule', ['ngAnimate']);
 
 // Load module parts
 require('./controller');
@@ -15,9 +15,6 @@ catModule.config(['$routeProvider',
 		$routeProvider.when('/cats/', {
 			templateUrl: 'partials/cats/overviewCat.html',
 			action: 'overviewCatCtrl'
-		}).when('/cats/register', {
-			templateUrl: 'partials/cats/registerCat.html',
-			action: 'createCatCtrl'
 		});
 	}]
 );

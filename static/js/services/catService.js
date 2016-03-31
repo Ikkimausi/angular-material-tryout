@@ -24,5 +24,4 @@ module.exports = function ($http, Upload) {
 	this.deleteCat = function (cat) {
 		return $http.delete(BASE_URI + cat._id);
 	};
-}
-;
+};

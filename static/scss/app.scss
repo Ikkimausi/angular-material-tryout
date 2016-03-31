@@ -3,20 +3,34 @@
 
 $fadeInTransition: all linear .3s;
 
+.ng-leave,
+.ng-move,
+.ng-enter {
+  transition: #{$fadeInTransition};
+}
+
+.ng-leave.ng-leave-active,
+.ng-move,
+.ng-enter {
+  opacity: 0;
+}
+
+.ng-leave,
+.ng-move.ng-move-active,
+.ng-enter.ng-enter-active {
+  opacity: 1;
+}
+
 img {
   object-fit: contain;
 }
 
-img.ng-hide {
+.ng-hide {
   opacity: 0;
 }
 
 .ng-hide-remove {
   transition: #{$fadeInTransition};
-}
-
-.error.ng-hide {
-  opacity: 0;
 }
 
 .error {

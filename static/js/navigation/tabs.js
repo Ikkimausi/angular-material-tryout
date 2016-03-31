@@ -1,10 +1,17 @@
 'use strict';
 
-module.exports = function ($scope, $location, $route, navigationService) {
+module.exports = function ($scope, $mdDialog, navigationService) {
 	$scope.selectedIndex = 0;
 	$scope.tabs = navigationService.getTabs();
 
 	$scope.registerNew = function () {
-		$location.path($scope.tabs[$scope.selectedIndex].label + '/register');
+		let tab = $scope.tabs[$scope.selectedIndex];
+		$mdDialog.show({
+			controller: tab.controller,
+			templateUrl: tab.templateUrl,
+			clickOutsideToClose: true
+		}).then(function (response) {
+			$scope.$broadcast(tab.path + '.refresh');
+		});
 	};
 };

@@ -1,9 +1,9 @@
 'use strict';
 
-module.exports = function ($scope, catService) {
+module.exports = function ($scope, catService, eventService) {
 	$scope.removeCat = function () {
 		catService.deleteCat($scope.cat).then(function success() {
-			$scope.$emit('catDeleted');
+			eventService.dispatchEvent('cats.refresh');
 		});
 	};
 };

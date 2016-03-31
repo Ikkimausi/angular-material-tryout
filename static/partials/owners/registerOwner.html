@@ -1,51 +1,29 @@
-<div ng-controller="registerOwnerCtrl" layout="column" ng-cloak class="md-inline-form">
-	<md-content layout-padding>
+<md-dialog aria-label="{{title}}" ng-controller="registerOwnerCtrl" flex-gt-sm="66">
+	<my-dialog-header title="{{title}}"></my-dialog-header>
+	<md-dialog-content layout-padding>
 		<form name="ownerForm">
 			<div layout-gt-sm="row">
-				<md-input-container class="md-block" flex-gt-sm>
-					<label>Voornaam</label>
-					<input ng-model="owner.voornaam">
-				</md-input-container>
-				<md-input-container class="md-block" flex-gt-sm>
-					<label>Familienaam</label>
-					<input ng-model="owner.familienaam">
-				</md-input-container>
+				<text-with-label label="Voornaam" model="owner.voornaam" required="true" flex></text-with-label>
+				<text-with-label label="Familienaam" model="owner.familienaam" required="true" flex></text-with-label>
 			</div>
 			<div layout-gt-sm="row">
-				<md-input-container class="md-block" flex-gt-sm>
-					<label>Adres</label>
-					<input ng-model="owner.adres.straat">
-				</md-input-container>
-				<md-input-container class="md-block" flex-gt-sm="nogrow">
-					<label>Nummer</label>
-					<input ng-model="owner.address.nummer">
-				</md-input-container>
+				<text-with-label label="Straat" model="owner.adres.straat" required="true" flex></text-with-label>
+				<text-with-label label="Nummer" model="owner.adres.nummer" flex></text-with-label>
 			</div>
 			<div layout-gt-sm="row">
-				<md-input-container class="md-block" flex-gt-sm="nogrow">
-					<label>Postcode</label>
-					<input name="postalCode" ng-model="owner.address.postcode">
-				</md-input-container>
-				<md-input-container class="md-block" flex-gt-sm>
-					<label>Gemeente</label>
-					<input ng-model="owner.address.gemeente">
-				</md-input-container>
+				<text-with-label label="Postcode" model="owner.adres.postcode" required="true"
+				                 flex-gt-sm="nogrow"></text-with-label>
+				<text-with-label label="Gemeente" model="owner.adres.gemeente" flex></text-with-label>
 			</div>
-			<md-input-container class="md-block" flex-gt-sm>
-				<label>Email</label>
-				<input ng-model="owner.email">
-			</md-input-container>
-			<md-input-container class="md-block" flex-gt-sm>
-				<label>Telefoonnummer</label>
-				<input ng-model="owner.telefoonnummer">
-			</md-input-container>
-			<md-input-container class="md-block" flex-gt-sm>
-				<label>Noodnummer</label>
-				<input ng-model="owner.noodnummer">
-			</md-input-container>
+			<text-with-label label="Email" model="owner.email" flex></text-with-label>
+			<text-with-label label="Telefoonnummer" model="owner.telefoonnummer" flex></text-with-label>
+			<text-with-label label="Noodnummer" model="owner.noodnummer" required="true" flex></text-with-label>
+			<img-upload-preview picture-model="foto" style="width: 300px"></img-upload-preview>
 		</form>
-		<md-button ng-click="cancelOwner()">Annuleer</md-button>
-		<md-button ng-click="saveOwner()">Registreer eigenaar</md-button>
-	</md-content>
-</div>
-
+	</md-dialog-content>
+	<my-dialog-footer class="md-actions" show-error="showError" error="{{error}}">
+		<md-button ng-click="saveOwner()" ng-disabled="!ownerForm.$valid || (progress > 0 && progress < 100)">
+			Registreer eigenaar
+		</md-button>
+	</my-dialog-footer>
+</md-dialog>

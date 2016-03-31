@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function ($scope, catService) {
+module.exports = function ($scope, catService, eventService) {
 	$scope.cats = null;
 
 	let getCats = function () {
@@ -9,9 +9,7 @@ module.exports = function ($scope, catService) {
 		});
 	};
 
-	$scope.$on('catDeleted', function (event, args) {
-		getCats();
-	});
+	eventService.addListener($scope, "cats.refresh", getCats);
 
 	getCats();
 };

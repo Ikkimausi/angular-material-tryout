@@ -1,32 +1,23 @@
-<div ng-controller="registerCatCtrl" layout="column" ng-cloak class="md-inline-form">
-	<md-content layout-padding>
-		<form name="catForm" enctype="multipart/form-data">
+<md-dialog aria-label="{{title}}" ng-controller="registerCatCtrl" flex-gt-sm="66">
+	<my-dialog-header title="{{title}}"></my-dialog-header>
+	<md-dialog-content layout-padding>
+		<form name="catForm" enctype="multipart/form-data" layout-gt-sm="column">
 			<div layout-gt-sm="row">
 				<text-with-label label="Naam" model="cat.naam" required="true" flex></text-with-label>
 				<date-selector date="cat.geboortedatum" min-year="today.getFullYear() - 30"
 				               max-year="today.getFullYear()" required="true"></date-selector>
 			</div>
-			<div layout-gt-sm="column">
-				<img ngf-thumbnail="foto"
-				     ng-init="imgLoading = true" my-load="imgLoading = false"
-				     ng-show="foto != null && !imgLoading"
-				     style="max-height: 300px;max-width: 300px"/>
-				<md-progress-circular md-mode="indeterminate"
-				                      ng-show="foto != null && imgLoading"></md-progress-circular>
-				<div class="error" ng-if="fotoError">
-					<div>{{fotoError}}</div>
+			<div layout-gt-sm="row">
+				<img-upload-preview picture-model="foto" style="width: 300px"></img-upload-preview>
+				<div layout-gt-sm="column" layout-padding>
+					<md-radio-group ng-model="cat.geslacht" required>
+						<md-radio-button value="man">Man</md-radio-button>
+						<md-radio-button value="vrouw">Vrouw</md-radio-button>
+					</md-radio-group>
+					<md-checkbox ng-model="cat.gecastreerd" aria-label="Gecastreerd?">
+						Gecastreerd?
+					</md-checkbox>
 				</div>
-				<input type="file" ngf-select ng-model="foto" name="file"
-				       accept="image/jpeg" required ng-change="fileSelected()">
-			</div>
-			<div layout-gt-sm="column">
-				<md-radio-group ng-model="cat.geslacht" layout="row">
-					<md-radio-button value="man">Man</md-radio-button>
-					<md-radio-button value="vrouw">Vrouw</md-radio-button>
-				</md-radio-group>
-				<md-checkbox ng-model="cat.gecastreerd" aria-label="Gecastreerd?">
-					Gecastreerd?
-				</md-checkbox>
 			</div>
 			<text-area-with-label label="Voeding" model="cat.voeding" required="false" flex></text-area-with-label>
 			<text-with-label label="Gedrag" model="cat.gedrag" required="false"></text-with-label>
@@ -38,14 +29,16 @@
 			<md-input-container class="md-block" flex-gt-sm>
 				<label>Eigenaar</label>
 				<md-select ng-model="cat.eigenaar">
-					<md-option ng-repeat="owner in owners" value="{{owner.naam}}" ng-disabled="$index === 1">
-						{{owner.name}}
+					<md-option ng-repeat="owner in owners" value="{{owner._id}}">
+						{{owner.naam}} {{owner.familienaam}}, {{owner.telefoonnummer}}
 					</md-option>
 				</md-select>
 			</md-input-container>
 		</form>
-		<md-button ng-click="cancelCat()">Annuleer</md-button>
-		<md-button ng-click="saveCat()" ng-disabled="!catForm.$valid || (progress > 0 && progress < 100)">Registreer kat
+	</md-dialog-content>
+	<my-dialog-footer class="md-actions" show-error="showError" error="{{error}}">
+		<md-button ng-click="saveCat()" ng-disabled="!catForm.$valid || (progress > 0 && progress < 100)">
+			Registreer kat
 		</md-button>
-	</md-content>
-</div>
+	</my-dialog-footer>
+</md-dialog>
