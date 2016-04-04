@@ -4,7 +4,8 @@ module.exports = function () {
 	return {
 		restrict: 'E',
 		scope: {
-			pictureModel: '='
+			pictureModel: '=',
+			required: '='
 		},
 		templateUrl: '../../../partials/directives/input/imgUploadPreview.html',
 		controller: ['$scope', require('./imgUploadPreviewController')]

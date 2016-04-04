@@ -11,7 +11,7 @@
 		<div>{{fotoError}}</div>
 	</div>
 	<input type="file" ngf-select ng-model="pictureModel" name="file"
-	       accept="image/jpeg" required
+	       accept="image/jpeg" ng-required="required"
 	       ng-change="fileSelected()"
 	       ng-click="inputClicked()">
 </div>
