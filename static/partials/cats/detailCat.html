@@ -1,4 +1,4 @@
-<div ng-controller="detailCatCtrl" layout="row">
+<div ng-controller="detailCatCtrl">
 	<md-card layout="column" flex>
 		<div layout="row">
 			<md-card-content>
@@ -10,35 +10,7 @@
 				</md-card-title-media>
 			</md-card-content>
 			<md-card-title layout="column">
-				<md-input-container class="md-block md-headline" flex-gt-sm>
-					<input type="text" ng-model="cat.naam" ng-required="true" aria-label="catName">
-				</md-input-container>
-				<date-selector date="cat.geboortedatum" min-year="today.getFullYear() - 30"
-				               max-year="today.getFullYear()" required="true"></date-selector>
-				<div layout="column" layout-padding>
-					<md-radio-group ng-model="cat.geslacht" required layout="row">
-						<md-radio-button value="man">Man</md-radio-button>
-						<md-radio-button value="vrouw">Vrouw</md-radio-button>
-					</md-radio-group>
-					<md-checkbox ng-model="cat.gecastreerd" aria-label="Gecastreerd?">
-						Gecastreerd?
-					</md-checkbox>
-				</div>
-				<text-area-with-label label="Voeding" model="cat.voeding" required="false" flex></text-area-with-label>
-				<text-with-label label="Gedrag" model="cat.gedrag" required="false"></text-with-label>
-				<div layout-gt-sm="row">
-					<text-area-with-label label="Medicatie" model="cat.medicatie" required="false"
-					                      flex></text-area-with-label>
-					<text-with-label label="Dierenarts" model="cat.dierenarts" required="false" flex></text-with-label>
-				</div>
-				<md-input-container class="md-block" flex-gt-sm>
-					<label>Eigenaar</label>
-					<md-select ng-model="cat.eigenaar">
-						<md-option ng-repeat="owner in owners" value="{{owner._id}}">
-							{{owner.naam}} {{owner.familienaam}}, {{owner.telefoonnummer}}
-						</md-option>
-					</md-select>
-				</md-input-container>
+				<cat-info cat="cat"></cat-info>
 			</md-card-title>
 		</div>
 		<md-card-actions layout="row" layout-align="end center">

@@ -18,3 +18,4 @@ directiveModule.directive('myDialogHeader', [require('./dialog/dialogHeader')]);
 directiveModule.directive('myDialogFooter', [require('./dialog/dialogFooter')]);
 
 directiveModule.directive('catTile', [require('./cats/catTile')]);
+directiveModule.directive('catInfo', [require('./cats/catInfo')]);
