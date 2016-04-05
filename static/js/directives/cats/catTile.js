@@ -7,6 +7,6 @@ module.exports = function () {
 			cat: '='
 		},
 		templateUrl: '../../../partials/directives/cats/catTile.html',
-		controller: ['$scope', 'catService', 'eventService', require('./catTileController')]
+		controller: ['$scope', '$location', 'catService', 'eventService', require('./catTileController')]
 	}
 };

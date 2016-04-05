@@ -15,6 +15,9 @@ catModule.config(['$routeProvider',
 		$routeProvider.when('/cats/', {
 			templateUrl: 'partials/cats/overviewCat.html',
 			action: 'overviewCatCtrl'
+		}).when('/cats/:catId', {
+			templateUrl: 'partials/cats/detailCat.html',
+			action: 'detailCatCtrl'
 		});
 	}]
 );
