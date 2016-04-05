@@ -1,7 +1,6 @@
 <div ng-controller="overviewOwnerCtrl" layout="row" layout-margin layout-wrap layout-align="center">
-	<ul>
-		<li ng-repeat="owner in owners track by owner._id">{{owner.voornaam}} {{owner.familienaam}}</li>
-	</ul>
+	<owner-tile class="animate-repeat" ng-repeat="owner in owners track by owner._id" owner="owner"
+	            ng-show="owners != null && owners.length > 0"></owner-tile>
 	<span class="md-headline animate-repeat" ng-show="owners.length == 0">Geen eigenaars gevonden</span>
 	<md-progress-circular ng-show="owners == null"
 	                      md-mode="indeterminate"

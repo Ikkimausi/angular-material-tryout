@@ -25,7 +25,7 @@
 		<label>Eigenaar</label>
 		<md-select ng-model="cat.eigenaar">
 			<md-option ng-repeat="owner in owners" value="{{owner._id}}">
-				{{owner.naam}} {{owner.familienaam}}, {{owner.telefoonnummer}}
+				{{owner.voornaam}} {{owner.familienaam}}, {{owner.telefoonnummer}}
 			</md-option>
 		</md-select>
 	</md-input-container>

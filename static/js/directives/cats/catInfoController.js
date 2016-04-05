@@ -1,10 +1,10 @@
 'use strict';
 
-module.exports = function ($scope, ownerApiService) {
+module.exports = function ($scope, ownerService) {
 	$scope.today = new Date();
 
 	$scope.owners = null;
-	ownerApiService.getOwners().then(function (owners) {
+	ownerService.getOwners().then(function (owners) {
 		$scope.owners = owners;
 	});
 };

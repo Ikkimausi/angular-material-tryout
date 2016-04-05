@@ -7,6 +7,6 @@ module.exports = function () {
 			cat: '='
 		},
 		templateUrl: '../../../partials/directives/cats/catInfo.html',
-		controller: ['$scope', 'ownerApiService', require('./catInfoController')]
+		controller: ['$scope', 'ownerService', require('./catInfoController')]
 	}
 };

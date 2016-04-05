@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function ($scope, $mdDialog, ownerApiService, eventService) {
+module.exports = function ($scope, $mdDialog, ownerService, eventService) {
 	$scope.title = "Registreer eigenaar";
 	$scope.foto = null;
 	$scope.progress = 0;
@@ -19,7 +19,7 @@ module.exports = function ($scope, $mdDialog, ownerApiService, eventService) {
 	};
 
 	$scope.saveOwner = function () {
-		ownerApiService.registerOwner($scope.owner, $scope.foto)
+		ownerService.registerOwner($scope.owner, $scope.foto)
 			.then(function (response) {
 				$scope.progress = 100;
 				eventService.dispatchEvent("owners.refresh");

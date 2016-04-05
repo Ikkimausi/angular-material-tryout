@@ -1,0 +1,14 @@
+<md-card style="min-width: 300px;" layout="column" flex>
+	<md-card-title layout-padding>
+		<md-card-title-text flex>
+			<span class="md-headline">{{owner.familienaam+', '+owner.voornaam}}</span>
+			<span>{{owner.adres.straat}} {{owner.adres.nummer}}, {{owner.adres.postcode}} {{owner.adres.gemeente}}</span>
+			<span class="md-subhead">{{owner.email}}</span>
+			<span class="md-subhead">{{owner.telefoonnummer}}</span>
+			<span class="md-subhead">{{owner.noodnummer}}</span>
+		</md-card-title-text>
+	</md-card-title>
+	<md-card-actions layout="row" layout-align="end center">
+		<md-button ng-click="removeOwner()">Verwijder</md-button>
+	</md-card-actions>
+</md-card>
