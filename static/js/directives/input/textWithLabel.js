@@ -6,7 +6,8 @@ module.exports = function () {
 		scope: {
 			label: '@',
 			model: '=',
-			required: '='
+			required: '=',
+			type: '@'
 		},
 		templateUrl: '../../../partials/directives/input/textWithLabel.html'
 	}

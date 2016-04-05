@@ -1,6 +1,6 @@
 <div layout-gt-sm="column" flex>
 	<div layout-gt-sm="row">
-		<text-with-label label="Naam" model="cat.naam" required="true" flex></text-with-label>
+		<text-with-label label="Naam" model="cat.naam" required="true" type="text" flex></text-with-label>
 		<date-selector date="cat.geboortedatum" min-year="today.getFullYear() - 30"
 		               max-year="today.getFullYear()" required="true">
 		</date-selector>
@@ -15,11 +15,11 @@
 		</md-checkbox>
 	</div>
 	<text-area-with-label label="Voeding" model="cat.voeding" required="false" flex></text-area-with-label>
-	<text-with-label label="Gedrag" model="cat.gedrag" required="false"></text-with-label>
+	<text-with-label label="Gedrag" model="cat.gedrag" type="text" required="false"></text-with-label>
 	<div layout-gt-sm="row">
 		<text-area-with-label label="Medicatie" model="cat.medicatie" required="false"
 		                      flex></text-area-with-label>
-		<text-with-label label="Dierenarts" model="cat.dierenarts" required="false" flex></text-with-label>
+		<text-with-label type="text" label="Dierenarts" model="cat.dierenarts" required="false" flex></text-with-label>
 	</div>
 	<md-input-container class="md-block" flex-gt-sm>
 		<label>Eigenaar</label>
