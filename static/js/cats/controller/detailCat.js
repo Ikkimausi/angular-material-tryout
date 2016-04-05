@@ -11,4 +11,10 @@ module.exports = function ($scope, $routeParams, catService) {
 	$scope.cancelCat = function () {
 		window.history.back();
 	};
+
+	$scope.removeCat = function () {
+		catService.deleteCat($scope.cat).then(function success() {
+			window.history.back();
+		});
+	};
 };

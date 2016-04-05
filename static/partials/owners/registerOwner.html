@@ -1,30 +1,33 @@
 <md-dialog aria-label="{{title}}" ng-controller="registerOwnerCtrl" flex-gt-sm="66">
 	<my-dialog-header title="{{title}}"></my-dialog-header>
 	<md-dialog-content layout-padding>
-		<form name="ownerForm">
-			<div layout-gt-sm="row">
-				<text-with-label label="Voornaam" model="owner.voornaam" type="text" required="true"
-				                 flex></text-with-label>
-				<text-with-label label="Familienaam" model="owner.familienaam" type="text" required="true"
-				                 flex></text-with-label>
-			</div>
-			<div layout-gt-sm="row">
-				<text-with-label label="Straat" model="owner.adres.straat" type="text" required="true"
-				                 flex></text-with-label>
-				<text-with-label label="Nummer" model="owner.adres.nummer" type="text" flex></text-with-label>
-			</div>
-			<div layout-gt-sm="row">
-				<text-with-label label="Postcode" model="owner.adres.postcode" type="number" required="true"
-				                 flex-gt-sm="nogrow"></text-with-label>
-				<text-with-label label="Gemeente" model="owner.adres.gemeente" type="text" flex></text-with-label>
-			</div>
-			<text-with-label label="Email" model="owner.email" type="email" flex></text-with-label>
-			<text-with-label label="Telefoonnummer" model="owner.telefoonnummer" type="tel" required="true"
-			                 flex></text-with-label>
-			<text-with-label label="Noodnummer" model="owner.noodnummer" type="tel"
-			                 flex></text-with-label>
+		<form name="ownerForm" layout="row" layout-padding>
 			<img-upload-preview picture-model="foto" required="false" style="width: 300px"
 			                    show-input="true"></img-upload-preview>
+			<div layout-gt-sm="column" flex>
+				<div layout-gt-sm="row">
+					<text-with-label label="Voornaam" model="owner.voornaam" type="text" required="true"
+					                 flex></text-with-label>
+					<text-with-label label="Familienaam" model="owner.familienaam" type="text" required="true"
+					                 flex></text-with-label>
+				</div>
+				<div layout-gt-sm="row">
+					<text-with-label label="Straat" model="owner.adres.straat" type="text" required="true"
+					                 flex></text-with-label>
+					<text-with-label label="Nummer" model="owner.adres.nummer" type="text"
+					                 flex-gt-sm="nogrow"></text-with-label>
+				</div>
+				<div layout-gt-sm="row">
+					<text-with-label label="Postcode" model="owner.adres.postcode" type="number" required="true"
+					                 flex-gt-sm="nogrow"></text-with-label>
+					<text-with-label label="Gemeente" model="owner.adres.gemeente" type="text" flex></text-with-label>
+				</div>
+				<text-with-label label="Email" model="owner.email" type="email" flex></text-with-label>
+				<text-with-label label="Telefoonnummer" model="owner.telefoonnummer" type="tel" required="true"
+				                 flex></text-with-label>
+				<text-with-label label="Noodnummer" model="owner.noodnummer" type="tel"
+				                 flex></text-with-label>
+			</div>
 		</form>
 	</md-dialog-content>
 	<my-dialog-footer class="md-actions" show-error="showError" error="{{error}}">
