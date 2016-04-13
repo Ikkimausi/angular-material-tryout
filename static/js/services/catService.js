@@ -23,8 +23,12 @@ module.exports = function ($http, Upload) {
 		});
 	};
 
-	this.updateCat = function (cat) {
-		return $http.put(BASE_URI + cat.id, cat);
+	this.updateCat = function (catId, changes) {
+		return Upload.upload({
+			url: BASE_URI + catId,
+			method: 'PUT',
+			data: changes, file: changes.foto
+		});
 	};
 
 	this.deleteCat = function (cat) {

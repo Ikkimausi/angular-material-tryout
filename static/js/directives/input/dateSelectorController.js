@@ -28,7 +28,6 @@ module.exports = function ($scope) {
 			return $scope.day;
 		},
 		function handleDayChange(newValue) {
-			$scope.date = initDate($scope.date);
 			$scope.date.setDate(newValue);
 			setDate();
 		}
@@ -39,7 +38,6 @@ module.exports = function ($scope) {
 			return $scope.month;
 		},
 		function handleMonthChange(newValue) {
-			$scope.date = initDate($scope.date);
 			$scope.date.setMonth(newValue);
 			setDate();
 		}
@@ -50,7 +48,6 @@ module.exports = function ($scope) {
 			return $scope.year;
 		},
 		function handleYearChange(newValue) {
-			$scope.date = initDate($scope.date);
 			$scope.date.setFullYear(newValue);
 			setDate();
 		}
@@ -64,6 +61,7 @@ function initDate(date) {
 	} else if (!(date instanceof Date)) {
 		date = new Date(date);
 	}
+	date.setHours(0, 0, 0, 0);
 	return date;
 }
 

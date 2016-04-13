@@ -1,6 +1,6 @@
 <div layout-gt-sm="column">
 	<div style="width: 300px;height: 300px;border: 1px solid black;cursor: pointer;"
-	     onclick="this.nextElementSibling.click()">
+	     ngf-select="fileSelected($file)">
 		<img ngf-src="pictureModel"
 		     ng-init="imgLoading = true" my-load="imgLoading = false"
 		     ng-show="pictureModel != null && !imgLoading"
@@ -8,11 +8,6 @@
 		<md-progress-circular md-mode="indeterminate"
 		                      ng-show="pictureModel != null && imgLoading"></md-progress-circular>
 	</div>
-	<input id="file" type="file" ngf-select ng-model="pictureModel" name="file"
-	       ng-show="showInput"
-	       accept="image/jpeg" ng-required="required"
-	       ng-change="fileSelected()"
-	       ng-click="inputClicked()">
 	<div class="error" ng-if="fotoError != null">
 		<div>{{fotoError}}</div>
 	</div>

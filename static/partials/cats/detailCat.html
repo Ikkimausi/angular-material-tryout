@@ -1,6 +1,6 @@
 <div ng-controller="detailCatCtrl">
 	<md-card layout="column" flex>
-		<div layout="row">
+		<form name="catForm" enctype="multipart/form-data" layout-padding layout-gt-sm="row" flex>
 			<md-card-content>
 				<md-card-title-media>
 					<div class="md-media-lg card-media">
@@ -12,11 +12,11 @@
 			<md-card-title layout="column">
 				<cat-info cat="cat"></cat-info>
 			</md-card-title>
-		</div>
+		</form>
 		<md-card-actions layout="row" layout-align="end center">
 			<md-button ng-click="cancelCat()">Annuleer</md-button>
 			<md-button ng-click="removeCat()">Verwijder</md-button>
-			<md-button ng-disabled="true">Pas aan</md-button>
+			<md-button ng-click="saveCat()" ng-disabled="!catForm.$valid">Pas aan</md-button>
 		</md-card-actions>
 	</md-card>
 </div>
