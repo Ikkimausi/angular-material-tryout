@@ -23,9 +23,10 @@ module.exports = function ($scope, ownerService) {
 
 	$scope.selectedItemChanged = function (eigenaarId) {
 		$scope.cat.eigenaar = eigenaarId || "";
-		if (eigenaarId) {
-			$scope.showOwnerCreation = false;
-		}
+	};
+
+	$scope.clearSelectedItem = function () {
+		$scope.cat.eigenaar = $scope.searchText = "";
 	};
 
 	getOwners();
