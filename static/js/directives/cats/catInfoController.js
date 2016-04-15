@@ -1,40 +1,18 @@
 'use strict';
 
 module.exports = function ($scope, ownerService) {
-	let getOwners = function () {
-		ownerService.getOwners().then(function (owners) {
-			owners.forEach(function (owner) {
-				if ($scope.cat && $scope.cat.eigenaar == owner._id) {
-					$scope.eigenaar = owner;
-					return;
-				}
-			});
-
-			$scope.owners = owners;
-		});
-	};
-
 	$scope.today = new Date();
 	$scope.owners = null;
 
-	$scope.findMatches = function (searchText) {
-		return searchText ? $scope.owners.filter(createFilter(searchText)) : $scope.owners;
+	$scope.searchHandler = function (searchText) {
+		let lowercaseQuery = angular.lowercase(searchText);
+		return function filterFn(owner) {
+			return owner && owner.display && owner.display.toLowerCase().indexOf(lowercaseQuery) > -1;
+		};
 	};
 
-	$scope.selectedItemChanged = function (eigenaarId) {
-		$scope.cat.eigenaar = eigenaarId || "";
+	$scope.getResultsHandler = function () {
+		return ownerService.getOwners();
 	};
 
-	$scope.clearSelectedItem = function () {
-		$scope.cat.eigenaar = $scope.searchText = "";
-	};
-
-	getOwners();
 };
-
-function createFilter(searchText) {
-	let lowercaseQuery = angular.lowercase(searchText);
-	return function filterFn(owner) {
-		return owner && owner.display && owner.display.toLowerCase().indexOf(lowercaseQuery) > -1;
-	};
-}

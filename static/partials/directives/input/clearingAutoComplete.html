@@ -1,0 +1,20 @@
+<div layout-gt-sm="row">
+	<md-autocomplete flex
+	                 md-floating-label="{{label}}"
+	                 md-selected-item="selectedItem"
+	                 md-selected-item-change="selectedItemChanged(item._id)"
+	                 md-search-text="searchText"
+	                 md-items="item in findMatches(searchText)"
+	                 md-item-text="item[filterProperty]"
+	                 md-min-length="0">
+		<md-item-template>
+			<span md-highlight-text="searchText" md-highlight-flags="i">{{item[filterProperty]}}</span>
+		</md-item-template>
+		<md-not-found>
+			Geen {{notFoundLabel}} gevonden in overeenstemming met "{{searchText}}".
+		</md-not-found>
+	</md-autocomplete>
+	<md-button class="md-icon-button" ng-click="clearSelectedItem()" style="margin-top: 20px">
+		<md-icon md-font-library="material-icons">close</md-icon>
+	</md-button>
+</div>
