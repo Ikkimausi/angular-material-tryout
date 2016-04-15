@@ -8,8 +8,7 @@ module.exports = function ($scope, $mdDialog, navigationService) {
 		let tab = $scope.tabs[$scope.selectedIndex];
 		$mdDialog.show({
 			controller: tab.controller,
-			templateUrl: tab.templateUrl,
-			clickOutsideToClose: true
+			templateUrl: tab.templateUrl
 		}).then(function (response) {
 			$scope.$broadcast(tab.path + '.refresh');
 		});

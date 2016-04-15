@@ -5,7 +5,12 @@ const BASE_URI = "http://localhost:3002/api/owners/";
 module.exports = function ($http, Upload) {
 	this.getOwners = function () {
 		return $http.get(BASE_URI).then(function (response) {
-			return response.data;
+			let result = [];
+			response.data.forEach(function (owner) {
+				owner.display = owner.voornaam + " " + owner.familienaam + ", " + owner.telefoonnummer;
+				result.push(owner);
+			});
+			return result;
 		});
 	};
 

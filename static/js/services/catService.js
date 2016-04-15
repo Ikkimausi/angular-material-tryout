@@ -11,7 +11,9 @@ module.exports = function ($http, Upload) {
 
 	this.getCat = function (catId) {
 		return $http.get(BASE_URI + catId).then(function (response) {
-			return response.data[0];
+			let cat = response.data[0];
+			cat.geboortedatum = new Date(cat.geboortedatum); // parse to date object
+			return cat;
 		});
 	};
 

@@ -5,37 +5,34 @@ let original;
 module.exports = function ($scope, $routeParams, catService) {
 	$scope.cat = null;
 
+	let returnToOverview = function () {
+		window.history.back();
+	};
+
 	catService.getCat($routeParams.catId).then(function (cat) {
 		$scope.cat = cat;
 		original = angular.copy(cat);
 	});
 
-	$scope.cancelCat = function () {
-		window.history.back();
-	};
+	$scope.cancelCat = returnToOverview;
 
 	$scope.removeCat = function () {
-		catService.deleteCat($scope.cat).then(function success() {
-			window.history.back();
-		});
+		catService.deleteCat($scope.cat).then(returnToOverview);
 	};
 
 	$scope.saveCat = function () {
-		let changes = {};
-		let hasChanges = false;
+		let changes;
 		for (let property in original) {
-			if (original[property] != $scope.cat[property]) {
+			if (!angular.equals(original[property], $scope.cat[property])) {
+				changes = changes || {};
 				changes[property] = $scope.cat[property];
-				hasChanges = true;
 			}
 		}
 
-		if (hasChanges) {
-			catService.updateCat(original._id, changes).then(function success() {
-				window.history.back();
-			});
+		if (changes) {
+			catService.updateCat(original._id, changes).then(returnToOverview);
 		} else {
-			window.history.back();
+			returnToOverview();
 		}
 	};
 };

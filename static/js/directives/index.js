@@ -21,3 +21,4 @@ directiveModule.directive('catTile', [require('./cats/catTile')]);
 directiveModule.directive('catInfo', [require('./cats/catInfo')]);
 
 directiveModule.directive('ownerTile', [require('./owners/ownerTile')]);
+directiveModule.directive('ownerInfo', [require('./owners/ownerInfo')]);

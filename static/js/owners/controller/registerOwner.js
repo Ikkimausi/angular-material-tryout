@@ -23,7 +23,7 @@ module.exports = function ($scope, $mdDialog, ownerService, eventService) {
 			.then(function (response) {
 				$scope.progress = 100;
 				eventService.dispatchEvent("owners.refresh");
-				$mdDialog.hide();
+				$mdDialog.hide(response.data);
 			}, function (response) {
 				$scope.progress = 0;
 				// Do something

@@ -19,14 +19,22 @@
 	<div layout-gt-sm="row">
 		<text-area-with-label label="Medicatie" model="cat.medicatie" required="false"
 		                      flex></text-area-with-label>
-		<text-with-label type="text" label="Dierenarts" model="cat.dierenarts" required="false" flex></text-with-label>
+		<text-with-label type="text" label="Dierenarts" model="cat.dierenarts" required="false"
+		                 flex></text-with-label>
 	</div>
-	<md-input-container class="md-block" flex-gt-sm>
-		<label>Eigenaar</label>
-		<md-select ng-model="cat.eigenaar">
-			<md-option ng-repeat="owner in owners" value="{{owner._id}}">
-				{{owner.voornaam}} {{owner.familienaam}}, {{owner.telefoonnummer}}
-			</md-option>
-		</md-select>
-	</md-input-container>
+	<md-autocomplete flex
+	                 md-floating-label="Eigenaar"
+	                 md-selected-item="eigenaar"
+	                 md-selected-item-change="selectedItemChanged(owner._id)"
+	                 md-search-text="searchText"
+	                 md-items="owner in findMatches(searchText)"
+	                 md-item-text="owner.display"
+	                 md-min-length="0">
+		<md-item-template>
+			<span md-highlight-text="searchText" md-highlight-flags="i">{{owner.display}}</span>
+		</md-item-template>
+		<md-not-found>
+			Geen eigenaars gevonden in overeenstemming met "{{searchText}}".
+		</md-not-found>
+	</md-autocomplete>
 </div>
