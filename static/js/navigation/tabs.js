@@ -6,10 +6,7 @@ module.exports = function ($scope, $mdDialog, navigationService) {
 
 	$scope.registerNew = function () {
 		let tab = $scope.tabs[$scope.selectedIndex];
-		$mdDialog.show({
-			controller: tab.controller,
-			templateUrl: tab.templateUrl
-		}).then(function (response) {
+		navigationService.registerNew(tab, function () {
 			$scope.$broadcast(tab.path + '.refresh');
 		});
 	};

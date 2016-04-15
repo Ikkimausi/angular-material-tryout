@@ -2,7 +2,7 @@
 
 let original;
 
-module.exports = function ($scope, $routeParams, catService) {
+module.exports = function ($scope, $routeParams, catService, navigationService) {
 	$scope.cat = null;
 
 	let returnToOverview = function () {
@@ -14,6 +14,7 @@ module.exports = function ($scope, $routeParams, catService) {
 		original = angular.copy(cat);
 	});
 
+	$scope.registerNewHandler = navigationService.registerNewOwner;
 	$scope.cancelCat = returnToOverview;
 
 	$scope.removeCat = function () {

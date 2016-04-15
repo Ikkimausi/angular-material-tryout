@@ -9,7 +9,8 @@ module.exports = function () {
 			filterProperty: '@',
 			selected: '=',
 			getResults: '&',
-			onSearch: '&'
+			onSearch: '&',
+			onRegisterNew: '&'
 		},
 		templateUrl: '../../../partials/directives/input/clearingAutoComplete.html',
 		controller: ['$scope', require('./clearingAutoCompleteController')]

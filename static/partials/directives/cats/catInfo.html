@@ -22,5 +22,7 @@
 		                 flex></text-with-label>
 	</div>
 	<clearing-auto-complete flex label="Eigenaar" not-found-label="eigenaars" filter-property="display"
-	                        get-results="getResultsHandler" selected="cat.eigenaar" on-search="searchHandler"></clearing-auto-complete>
+	                        selected="cat.eigenaar"
+	                        get-results="getResultsHandler" on-search="searchHandler"
+	                        on-register-new="registerNewHandler()"></clearing-auto-complete>
 </div>

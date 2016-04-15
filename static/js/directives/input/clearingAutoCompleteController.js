@@ -13,17 +13,31 @@ module.exports = function ($scope) {
 		$scope.selected = $scope.searchText = "";
 	};
 
-	let getResults = $scope.getResults();
+	$scope.registerNew = function () {
+		document.querySelector('md-virtual-repeat-container').classList.add('ng-hide');
+		let onRegisterNewFn = $scope.onRegisterNew();
+		if (onRegisterNewFn) {
+			onRegisterNewFn(function (response) {
+				$scope.selectedItemChanged(response);
+				getResults();
+			})
+		}
+	};
 
-	if (getResults) {
-		getResults().then(function (results) {
-			$scope.results = results;
-			results.forEach(function (item) {
-				if ($scope.selected == item._id) {
-					$scope.selectedItem = item;
-					return;
-				}
+	let getResults = function () {
+		let getResultsFn = $scope.getResults();
+		if (getResultsFn) {
+			getResultsFn().then(function (results) {
+				$scope.results = results;
+				results.forEach(function (item) {
+					if ($scope.selected == item._id) {
+						$scope.selectedItem = item;
+						return;
+					}
+				});
 			});
-		});
-	}
+		}
+	};
+
+	getResults();
 };

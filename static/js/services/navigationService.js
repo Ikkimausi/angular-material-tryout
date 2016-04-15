@@ -2,7 +2,7 @@
 
 let tabs;
 
-module.exports = function () {
+module.exports = function ($mdDialog) {
 	this.getTabs = function () {
 		if (!tabs) {
 			tabs = [createTab('Katten', 'cats', 'partials/cats/registerCat.html', require('../cats/controller/registerCat')),
@@ -11,6 +11,14 @@ module.exports = function () {
 		}
 
 		return tabs;
+	};
+
+	this.registerNew = function (tab, callback) {
+		internalRegisterNew($mdDialog, tab, callback);
+	};
+
+	this.registerNewOwner = function (callback) {
+		internalRegisterNew($mdDialog, tabs[1], callback);
 	};
 };
 
@@ -22,3 +30,10 @@ function createTab(label, path, template, ctrl) {
 		controller: ctrl
 	};
 }
+function internalRegisterNew($mdDialog, tab, callback) {
+	$mdDialog.show({
+		controller: tab.controller,
+		templateUrl: tab.templateUrl,
+		fullscreen: true
+	}).then(callback);
+}       

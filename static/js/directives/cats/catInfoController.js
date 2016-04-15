@@ -11,8 +11,5 @@ module.exports = function ($scope, ownerService) {
 		};
 	};
 
-	$scope.getResultsHandler = function () {
-		return ownerService.getOwners();
-	};
-
+	$scope.getResultsHandler = ownerService.getOwners;
 };

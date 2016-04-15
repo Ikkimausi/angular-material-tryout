@@ -11,7 +11,9 @@
 			<span md-highlight-text="searchText" md-highlight-flags="i">{{item[filterProperty]}}</span>
 		</md-item-template>
 		<md-not-found>
-			Geen {{notFoundLabel}} gevonden in overeenstemming met "{{searchText}}".
+			<a ng-mousedown="registerNew()">
+				Geen {{notFoundLabel}} gevonden in overeenstemming met "{{searchText}}".
+			</a>
 		</md-not-found>
 	</md-autocomplete>
 	<md-button class="md-icon-button" ng-click="clearSelectedItem()" style="margin-top: 20px">
