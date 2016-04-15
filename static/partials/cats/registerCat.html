@@ -1,15 +1,21 @@
 <md-dialog aria-label="{{title}}" ng-controller="registerCatCtrl" flex-gt-sm="66">
 	<my-dialog-header title="{{title}}"></my-dialog-header>
 	<md-dialog-content>
-		<form name="catForm" enctype="multipart/form-data" layout-padding layout-gt-sm="row" flex>
-			<img-upload-preview picture-model="foto" required="true" style="width: 300px"
+		<form name="form" enctype="multipart/form-data" layout-padding layout-gt-sm="row" flex>
+			<img-upload-preview picture-model="catFoto" required="true" style="width: 300px" ng-show="isCatState"
 			                    show-input="true"></img-upload-preview>
-			<cat-info cat="cat" flex></cat-info>
+			<cat-info cat="cat" register-new-handler="toggleOwnerState()" ng-show="isCatState" flex></cat-info>
+			<img-upload-preview ng-show="!isCatState" picture-model="ownerFoto" required="true" style="width: 300px"
+			                    show-input="true"></img-upload-preview>
+			<owner-info owner="owner" ng-show="!isCatState" flex></owner-info>
 		</form>
 	</md-dialog-content>
-	<my-dialog-footer class="md-actions" show-error="showError" error="{{error}}">
-		<md-button ng-click="saveCat()" ng-disabled="!catForm.$valid || (progress > 0 && progress < 100)">
-			Registreer kat
+
+	<my-dialog-footer class="md-actions" show-error="showError" error="{{error}}"
+	                  override-cancel="isCatState ? null : toggleCatState">
+		<md-button ng-click="isCatState ? saveCat() : saveOwner()"
+		           ng-disabled="!form.$valid || (progress > 0 && progress < 100)">
+			{{isCatState ? 'Registreer kat' : 'Registreer eigenaar'}}
 		</md-button>
 	</my-dialog-footer>
 </md-dialog>

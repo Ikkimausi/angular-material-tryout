@@ -2,6 +2,11 @@
 
 module.exports = function ($scope, $mdDialog) {
 	$scope.cancel = function () {
-		$mdDialog.cancel();
+		let overrideCancelFn = $scope.overrideCancel();
+		if (overrideCancelFn) {
+			overrideCancelFn();
+		} else {
+			$mdDialog.cancel();
+		}
 	};
 };
