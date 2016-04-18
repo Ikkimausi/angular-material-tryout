@@ -4,10 +4,10 @@
 		<form name="form" enctype="multipart/form-data" layout-padding layout-gt-sm="row" flex>
 			<img-upload-preview picture-model="catFoto" required="true" style="width: 300px" ng-show="isCatState"
 			                    show-input="true"></img-upload-preview>
-			<cat-info cat="cat" register-new-handler="toggleOwnerState()" ng-show="isCatState" flex></cat-info>
+			<cat-info cat="cat" register-new-handler="toggleOwnerState()" ng-if="isCatState" flex></cat-info>
 			<img-upload-preview ng-show="!isCatState" picture-model="ownerFoto" required="true" style="width: 300px"
 			                    show-input="true"></img-upload-preview>
-			<owner-info owner="owner" ng-show="!isCatState" flex></owner-info>
+			<owner-info owner="owner" ng-if="!isCatState" flex></owner-info>
 		</form>
 	</md-dialog-content>
 
