@@ -1,6 +1,6 @@
 'use strict';
 
-const BASE_URI = "http://localhost:3001/api/cats/";
+const BASE_URI = "http://localhost:4000/api/cats/";
 
 module.exports = function ($http, Upload) {
 	this.getCats = function () {
