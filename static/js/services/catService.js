@@ -5,13 +5,13 @@ const BASE_URI = "http://localhost:4000/api/cats/";
 module.exports = function ($http, Upload) {
 	this.getCats = function () {
 		return $http.get(BASE_URI).then(function (response) {
-			return response.data;
+			return response.data.data;
 		});
 	};
 
 	this.getCat = function (catId) {
 		return $http.get(BASE_URI + catId).then(function (response) {
-			let cat = response.data[0];
+			let cat = response.data.data[0];
 			cat.geboortedatum = new Date(cat.geboortedatum); // parse to date object
 			return cat;
 		});

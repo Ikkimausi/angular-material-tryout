@@ -6,7 +6,7 @@ module.exports = function ($http, Upload) {
 	this.getOwners = function () {
 		return $http.get(BASE_URI).then(function (response) {
 			let result = [];
-			response.data.forEach(function (owner) {
+			response.data.data.forEach(function (owner) {
 				owner.display = owner.voornaam + " " + owner.familienaam + ", " + owner.telefoonnummer;
 				result.push(owner);
 			});

@@ -23,7 +23,7 @@ module.exports = function ($scope, $mdDialog, catService, ownerService, eventSer
 
 	$scope.saveOwner = function () {
 		ownerService.registerOwner($scope.owner, $scope.ownerFoto).then(function (response) {
-			$scope.cat.eigenaar = response.data;
+			$scope.cat.eigenaar = response.data.data;
 			toggleCatState();
 		});
 	};
