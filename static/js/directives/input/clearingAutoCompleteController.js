@@ -25,16 +25,18 @@ module.exports = function ($scope) {
 	};
 
 	let getResults = function () {
-		let getResultsFn = $scope.getResults();
+		let getResultsFn = $scope.getResults && $scope.getResults();
 		if (getResultsFn) {
 			getResultsFn().then(function (results) {
 				$scope.results = results;
-				results.forEach(function (item) {
-					if ($scope.selected == item._id) {
-						$scope.selectedItem = item;
-						return;
-					}
-				});
+				if ($scope.selected) {
+					results.forEach(function (item) {
+						if ($scope.selected.itemId === item._id) {
+							$scope.selectedItem = item;
+							return;
+						}
+					});
+				}
 			});
 		}
 	};

@@ -15,9 +15,9 @@ module.exports = function ($scope, $mdDialog, catService, ownerService, eventSer
 	};
 
 	$scope.saveCat = function () {
-		catService.registerCat($scope.cat, $scope.catFoto).then(function (response) {
-			eventService.dispatchEvent("cats.refresh");
+		catService.registerCat($scope.cat, $scope.catFoto).then(function () {
 			$mdDialog.hide();
+			eventService.dispatchEvent("cats.refresh");
 		});
 	};
 
